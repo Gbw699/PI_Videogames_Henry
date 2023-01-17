@@ -6,9 +6,7 @@ const { API_KEY } = require("../../db");
 let urlsArray = [];
 for (let i = 1; i <= 5; i++) {
   urlsArray.push(
-    axios.get(
-      `https://api.rawg.io/api/games?key=e97391ed40314d8c9bececb74f3d1439&page=${i}`
-    )
+    axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`)
   );
 }
 
@@ -20,7 +18,6 @@ const getApiVideogames = async () => {
   );
   return arrayVideogames;
 };
-
 
 module.exports = {
   getApiVideogames,
