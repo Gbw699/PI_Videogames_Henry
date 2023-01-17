@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const { getVideogames } = require("../../controllers/getVideogames");
-//const { getVideogamesByQuery } = require();
+const {
+  getVideogamesByQuery,
+} = require("../../controllers/getVideogamesByQuery");
 
 const router = Router();
 
