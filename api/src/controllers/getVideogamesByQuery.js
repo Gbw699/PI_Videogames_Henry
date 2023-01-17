@@ -12,6 +12,8 @@ const getVideogamesByQuery = async (name) => {
     obj.name.toLowerCase().includes(name.toLowerCase())
   );
 
+  if (!arrayAllVideogames.length) throw Error("No se encontraron coincidencias")
+
   return arrayAllVideogames.slice(0, 15);
 };
 
