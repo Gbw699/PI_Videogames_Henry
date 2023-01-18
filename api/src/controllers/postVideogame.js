@@ -1,3 +1,5 @@
+// Controller que se encarga de crear un videojuego en la base de datos
+
 const { Videogame, Genre } = require("../db");
 
 const postVideogame = async (
