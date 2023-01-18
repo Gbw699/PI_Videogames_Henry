@@ -1,6 +1,6 @@
-//Funciones encargadas de conseguir los videojuegos de la base de datos
+//Funciones encargadas de conseguir información de la base de datos
 
-const { Videogame } = require("../../db");
+const { Videogame, Genre } = require("../../db");
 
 const getDbVideogames = async () => {
   const arrayDbVideogames = await Videogame.findAll();
@@ -12,7 +12,13 @@ const getDbVideogameByPk = async (id) => {
   return result;
 };
 
+const getDbGenres = async () => {
+  const result = await Genre.findAll();
+  return result;
+};
+
 module.exports = {
   getDbVideogames,
   getDbVideogameByPk,
+  getDbGenres,
 };
