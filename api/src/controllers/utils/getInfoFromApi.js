@@ -1,5 +1,4 @@
 //Funciones encargadas de conseguir información de la api
-
 const axios = require("axios");
 const { API_KEY } = require("../../db");
 

@@ -8,9 +8,9 @@ router.get("/:id", async (req, res) => {
   console.log(id);
   try {
     const result = await getVideogameById(id);
-    res.status(200).json(result);
+    return res.status(200).json(result);
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    return res.status(404).json({ error: error.message });
   }
 });
 
