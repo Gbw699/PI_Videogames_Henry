@@ -5,8 +5,9 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("videogame", {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID,
+      defaulValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
     },
     name: {

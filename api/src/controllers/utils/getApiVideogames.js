@@ -23,9 +23,19 @@ const getApiVideogameById = async (id) => {
   const result = await axios.get(
     `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
   );
-  return result;
+  return {
+    name: result.data.name,
+    background_image: result.data.background_image,
+    genres: result.data.genres,
+    description: result.data.description,
+    released: result.data.released,
+    rating: result.data.rating,
+    platforms: result.data.platforms,
+  };
+  //nombre, imagen, género, descripción, fecha de lanzamiento, rating, plataformas
 };
+
 module.exports = {
   getApiVideogames,
-  getApiVideogameById
+  getApiVideogameById,
 };
