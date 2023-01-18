@@ -1,4 +1,4 @@
-//Función que se encarga de conseguir los videojuegos de la base de datos
+//Funciones encargadas de conseguir los videojuegos de la base de datos
 
 const { Videogame } = require("../../db");
 
@@ -7,6 +7,12 @@ const getDbVideogames = async () => {
   return arrayDbVideogames;
 };
 
+const getDbVideogameByPk = async (id) => {
+  const result = await Videogame.findByPk(id);
+  return result;
+};
+
 module.exports = {
   getDbVideogames,
+  getDbVideogameByPk,
 };

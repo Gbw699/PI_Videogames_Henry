@@ -1,4 +1,4 @@
-//Función que se encarga de conseguir los videojuegos de la api
+//Funciones encargadas de conseguir los videojuegos de la api
 
 const axios = require("axios");
 const { API_KEY } = require("../../db");
@@ -19,6 +19,13 @@ const getApiVideogames = async () => {
   return arrayVideogames;
 };
 
+const getApiVideogameById = async (id) => {
+  const result = await axios.get(
+    `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
+  );
+  return result;
+};
 module.exports = {
   getApiVideogames,
+  getApiVideogameById
 };
