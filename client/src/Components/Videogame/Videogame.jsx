@@ -1,9 +1,10 @@
+import "./Videogame.scss"
+
 export default function Videogame(props) {
     return (
-        <div>
-            <img src={props.background_image} alt="img" />
+        <div class="contenedor">
+            <img class="img" src={props.background_image} alt="img" />
             <h3>{props.name}</h3>
-            
         </div>
     )
 }
