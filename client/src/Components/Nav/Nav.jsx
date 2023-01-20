@@ -1,4 +1,8 @@
-import { filterVideogames, orderVideogames, orderRating } from "../../Redux/actions";
+import {
+  filterVideogames,
+  orderVideogames,
+  orderRating,
+} from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 
 export default function Nav() {
@@ -15,7 +19,7 @@ export default function Nav() {
   };
 
   const handleDispatchRating = (e) => {
-    dispatch(orderRating(e.target.value))
+    dispatch(orderRating(e.target.value));
   };
 
   return (
@@ -53,7 +57,8 @@ export default function Nav() {
       <select
         name="videogames"
         id="videogames"
-        onChange={handleDispatchVideogames}>
+        onChange={handleDispatchVideogames}
+      >
         <option value="base">--Please choose an option--</option>
         <option value="upward">A-Z</option>
         <option value="downward">Z-A</option>
