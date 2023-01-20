@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <h1>Henry Videogames</h1>
-      {/* {location.pathname !== "/" && <Nav />} */}
+      {location.pathname !== "/" && <Nav />} 
       <Switch>
         <Route exact path="/">
           <LandingPage />

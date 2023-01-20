@@ -7,6 +7,7 @@ export default function Videogame(props) {
         <img className={img} src={props.background_image} alt="img" />
       </div>
       <h3>{props.name}</h3>
+      <h2>{props.rating}</h2>
     </div>
   );
 }

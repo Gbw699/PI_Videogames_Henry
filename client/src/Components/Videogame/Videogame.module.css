@@ -1,4 +1,10 @@
+.imgContainer {
+    
+}
+
 .img {
     width: 25rem;
     height: auto;
 }
+
+/*overflow hidden*/
