@@ -1,4 +1,4 @@
-import "./App.scss";
+import "./App.css";
 import Nav from "./Components/Nav/Nav.jsx";
 import LandingPage from "./Components/LandingPage/LandingPage.jsx";
 import Videogames from "./Components/Videogames/Videogames.jsx";
