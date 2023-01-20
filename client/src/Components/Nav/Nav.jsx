@@ -20,13 +20,13 @@ export default function Nav() {
 
   return (
     <div>
-      <label htmlFor="filter">Choose a filter: </label>
+      <label htmlFor="filter">Choose a Filter: </label>
       <select name="filter" id="filter" onChange={handleDispatchFilter}>
         <option value="base">--Please choose an option--</option>
         <option value="apiVideogames">Known videogames</option>
         <option value="dbVideogames">Created videogames</option>
       </select>
-      <label htmlFor="genres">Choose a genre: </label>
+      <label htmlFor="genres">Choose a Genre: </label>
       <select name="genres" id="genres" onChange={handleDispatchGenre}>
         <option value="base">--Please choose an option--</option>
         <option value="Action">Action</option>
@@ -49,20 +49,20 @@ export default function Nav() {
         <option value="Educational">Educational</option>
         <option value="Card">Card</option>
       </select>
-      <label htmlFor="videogames">Order by name: </label>
+      <label htmlFor="videogames">Order by Name: </label>
       <select
         name="videogames"
         id="videogames"
         onChange={handleDispatchVideogames}>
         <option value="base">--Please choose an option--</option>
-        <option value="upward">Upward</option>
-        <option value="downward">Downward</option>
+        <option value="upward">A-Z</option>
+        <option value="downward">Z-A</option>
       </select>
-      <label htmlFor="rating">Order by rating: </label>
+      <label htmlFor="rating">Order by Rating: </label>
       <select name="rating" id="rating" onChange={handleDispatchRating}>
         <option value="base">--Please choose an option--</option>
-        <option value="upward">Upward</option>
-        <option value="downward">Downward</option>
+        <option value="upward">1-5</option>
+        <option value="downward">5-1</option>
       </select>
       <input type="text" placeholder="Videogame´s name" />
       <button>Search</button>
