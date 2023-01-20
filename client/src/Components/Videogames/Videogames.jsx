@@ -7,17 +7,17 @@ import Videogame from "../Videogame/Videogame";
 
 export default function Videogames() {
   const dispatch = useDispatch();
-  const filteredVideogames = useSelector((state) => state.filteredVideogames);
+  const renderedVideogames = useSelector((state) => state.renderedVideogames);
   
   useEffect(() => {
-    if (!filteredVideogames.length) {
+    if (!renderedVideogames.length) {
       dispatch(getVideogames());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filteredVideogames]);
+  }, [renderedVideogames]);
 
   
-  const videogame = filteredVideogames.map((videogame, index) => {
+  const videogame = renderedVideogames.map((videogame, index) => {
     return (
       <Videogame
         id={videogame.id}

@@ -1,4 +1,4 @@
-import { filterVideogames, orderVideogames } from "../../Redux/actions";
+import { filterVideogames, orderVideogames, orderRating } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 
 export default function Nav() {
@@ -14,7 +14,9 @@ export default function Nav() {
     dispatch(orderVideogames(e.target.value));
   };
 
-  const handleDispatchRating = (e) => {};
+  const handleDispatchRating = (e) => {
+    dispatch(orderRating(e.target.value))
+  };
 
   return (
     <div>
