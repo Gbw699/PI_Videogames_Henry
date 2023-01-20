@@ -1,6 +1,6 @@
-const axios = require("axios");
-
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
+export const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
+export const ORDER_VIDEOGAMES = "ORDER_VIDEOGAMES";
 
 export const getVideogames = () => {
   return async (dispatch) => {
@@ -11,4 +11,12 @@ export const getVideogames = () => {
         else dispatch({ type: GET_VIDEOGAMES, payload: data });
       });
   };
+};
+
+export const filterVideogames = (value) => {
+  return { type: FILTER_VIDEOGAMES, payload: value };
+};
+
+export const orderVideogames = (value) => {
+  return { type: ORDER_VIDEOGAMES, payload: value };
 };

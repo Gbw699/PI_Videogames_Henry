@@ -1,15 +1,32 @@
+import { filterVideogames, orderVideogames } from "../../Redux/actions";
+import { useDispatch } from "react-redux";
+
 export default function Nav() {
+  const dispatch = useDispatch();
+
+  const handleDispatchFilter = (e) => {
+    dispatch(filterVideogames(e.target.value));
+  };
+
+  const handleDispatchGenre = (e) => {};
+
+  const handleDispatchVideogames = (e) => {
+    dispatch(orderVideogames(e.target.value));
+  };
+
+  const handleDispatchRating = (e) => {};
+
   return (
     <div>
-      <label htmlFor="filters">Choose a filter: </label>
-      <select name="filters" id="filters">
-        <option value="">--Please choose an option--</option>
+      <label htmlFor="filter">Choose a filter: </label>
+      <select name="filter" id="filter" onChange={handleDispatchFilter}>
+        <option value="base">--Please choose an option--</option>
         <option value="apiVideogames">Known videogames</option>
         <option value="dbVideogames">Created videogames</option>
       </select>
       <label htmlFor="genres">Choose a genre: </label>
-      <select name="genres" id="genres">
-        <option value="">--Please choose an option--</option>
+      <select name="genres" id="genres" onChange={handleDispatchGenre}>
+        <option value="base">--Please choose an option--</option>
         <option value="Action">Action</option>
         <option value="Indie">Indie</option>
         <option value="Adventure">Adventure</option>
@@ -31,14 +48,17 @@ export default function Nav() {
         <option value="Card">Card</option>
       </select>
       <label htmlFor="videogames">Order by name: </label>
-      <select name="videogames" id="videogames">
-        <option value="">--Please choose an option--</option>
+      <select
+        name="videogames"
+        id="videogames"
+        onChange={handleDispatchVideogames}>
+        <option value="base">--Please choose an option--</option>
         <option value="upward">Upward</option>
         <option value="downward">Downward</option>
       </select>
       <label htmlFor="rating">Order by rating: </label>
-      <select name="rating" id="rating">
-        <option value="">--Please choose an option--</option>
+      <select name="rating" id="rating" onChange={handleDispatchRating}>
+        <option value="base">--Please choose an option--</option>
         <option value="upward">Upward</option>
         <option value="downward">Downward</option>
       </select>
