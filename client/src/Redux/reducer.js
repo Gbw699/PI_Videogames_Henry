@@ -41,7 +41,11 @@ export default function reducer(state = initialState, action) {
     case ORDER_VIDEOGAMES:
       if (action.payload === "upward") {
         return {
-          ...state,
+          allVideogames: [
+            ...state.allVideogames.sort((videogame1, videogame2) => {
+              return videogame1.name.charCodeAt() - videogame2.name.charCodeAt();
+            }),
+          ],
           filteredVideogames: [
             ...state.filteredVideogames.sort((videogame1, videogame2) => {
               return videogame1.name.charCodeAt() - videogame2.name.charCodeAt();
@@ -50,7 +54,11 @@ export default function reducer(state = initialState, action) {
         };
       } else if (action.payload === "downward") {
         return {
-          ...state,
+          allVideogames: [
+            ...state.allVideogames.sort((videogame1, videogame2) => {
+              return videogame2.name.charCodeAt() - videogame1.name.charCodeAt();
+            }),
+          ],
           filteredVideogames: [
             ...state.filteredVideogames.sort((videogame1, videogame2) => {
               return videogame2.name.charCodeAt() - videogame1.name.charCodeAt();
