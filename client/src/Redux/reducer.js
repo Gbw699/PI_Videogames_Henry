@@ -8,6 +8,7 @@ import {
 const initialState = {
   allVideogames: [],
   renderedVideogames: [],
+  filteredVideogames: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -17,13 +18,14 @@ export default function reducer(state = initialState, action) {
         ...state,
         allVideogames: [...action.payload],
         renderedVideogames: [...action.payload],
+        filteredVideogames: [...action.payload],
       };
     case FILTER_VIDEOGAMES:
       if (action.payload === "apiVideogames") {
         return {
           ...state,
           renderedVideogames: [
-            ...state.allVideogames.filter(
+            ...state.filteredVideogames.filter(
               (videogame) => typeof videogame.id === "number"
             ),
           ],
@@ -32,7 +34,7 @@ export default function reducer(state = initialState, action) {
         return {
           ...state,
           renderedVideogames: [
-            ...state.allVideogames.filter(
+            ...state.filteredVideogames.filter(
               (videogame) => typeof videogame.id !== "number"
             ),
           ],
@@ -46,15 +48,16 @@ export default function reducer(state = initialState, action) {
     case ORDER_VIDEOGAMES:
       if (action.payload === "upward") {
         return {
-          allVideogames: [
-            ...state.allVideogames.sort((videogame1, videogame2) => {
+          ...state,
+          renderedVideogames: [
+            ...state.renderedVideogames.sort((videogame1, videogame2) => {
               return (
                 videogame1.name.charCodeAt() - videogame2.name.charCodeAt()
               );
             }),
           ],
-          renderedVideogames: [
-            ...state.renderedVideogames.sort((videogame1, videogame2) => {
+          filteredVideogames: [
+            ...state.filteredVideogames.sort((videogame1, videogame2) => {
               return (
                 videogame1.name.charCodeAt() - videogame2.name.charCodeAt()
               );
@@ -63,15 +66,16 @@ export default function reducer(state = initialState, action) {
         };
       } else if (action.payload === "downward") {
         return {
-          allVideogames: [
-            ...state.allVideogames.sort((videogame1, videogame2) => {
+          ...state,
+          renderedVideogames: [
+            ...state.renderedVideogames.sort((videogame1, videogame2) => {
               return (
                 videogame2.name.charCodeAt() - videogame1.name.charCodeAt()
               );
             }),
           ],
-          renderedVideogames: [
-            ...state.renderedVideogames.sort((videogame1, videogame2) => {
+          filteredVideogames: [
+            ...state.filteredVideogames.sort((videogame1, videogame2) => {
               return (
                 videogame2.name.charCodeAt() - videogame1.name.charCodeAt()
               );
@@ -81,32 +85,35 @@ export default function reducer(state = initialState, action) {
       } else {
         return {
           ...state,
-          renderedVideogames: [...state.allVideogames],
+          renderedVideogames: [...state.filteredVideogames],
+          filteredVideogames: [...state.allVideogames],
         };
       }
     case ORDER_RATING:
       if (action.payload === "upward") {
         return {
-          allVideogames: [
-            ...state.allVideogames.sort((videogame1, videogame2) => {
+          ...state,
+          renderedVideogames: [
+            ...state.renderedVideogames.sort((videogame1, videogame2) => {
               return videogame1.rating - videogame2.rating;
             }),
           ],
-          renderedVideogames: [
-            ...state.renderedVideogames.sort((videogame1, videogame2) => {
+          filteredVideogames: [
+            ...state.filteredVideogames.sort((videogame1, videogame2) => {
               return videogame1.rating - videogame2.rating;
             }),
           ],
         };
       } else if (action.payload === "downward") {
         return {
-          allVideogames: [
-            ...state.allVideogames.sort((videogame1, videogame2) => {
+          ...state,
+          renderedVideogames: [
+            ...state.renderedVideogames.sort((videogame1, videogame2) => {
               return videogame2.rating - videogame1.rating;
             }),
           ],
-          renderedVideogames: [
-            ...state.renderedVideogames.sort((videogame1, videogame2) => {
+          filteredVideogames: [
+            ...state.filteredVideogames.sort((videogame1, videogame2) => {
               return videogame2.rating - videogame1.rating;
             }),
           ],
@@ -114,7 +121,8 @@ export default function reducer(state = initialState, action) {
       } else {
         return {
           ...state,
-          renderedVideogames: [...state.allVideogames],
+          renderedVideogames: [...state.filteredVideogames],
+          filteredVideogames: [...state.allVideogames],
         };
       }
     default:
