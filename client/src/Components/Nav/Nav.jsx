@@ -2,11 +2,15 @@ import {
   filterVideogames,
   orderVideogames,
   orderRating,
+  searchVideogames
 } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function Nav() {
   const dispatch = useDispatch();
+  const [videogame, setVideogame] = useState("");
+
 
   const handleDispatchFilter = (e) => {
     dispatch(filterVideogames(e.target.value));
@@ -21,6 +25,10 @@ export default function Nav() {
   const handleDispatchRating = (e) => {
     dispatch(orderRating(e.target.value));
   };
+
+  const handleDispatchSearch = () => {
+    dispatch(searchVideogames(videogame))
+  } 
 
   return (
     <div>
@@ -69,8 +77,12 @@ export default function Nav() {
         <option value="upward">1-5</option>
         <option value="downward">5-1</option>
       </select>
-      <input type="text" placeholder="Videogame´s name" />
-      <button>Search</button>
+      <input
+        type="text"
+        placeholder="Videogame´s name"
+        onChange={(e) => setVideogame(e.target.value)}
+      />
+      <button onClick={handleDispatchSearch}>Search</button>
     </div>
   );
 }

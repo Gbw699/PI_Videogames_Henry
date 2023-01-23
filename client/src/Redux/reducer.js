@@ -3,8 +3,7 @@ import {
   FILTER_VIDEOGAMES,
   ORDER_VIDEOGAMES,
   ORDER_RATING,
-  GET_VIDEOGAME_BY_ID,
-  RESTART_DETAIL_VIDEOGAME,
+  SEARCH_VIDEOGAMES
 } from "./actions";
 
 const initialState = {
@@ -127,6 +126,11 @@ export default function reducer(state = initialState, action) {
           renderedVideogames: [...state.filteredVideogames],
           filteredVideogames: [...state.allVideogames],
         };
+      }
+    case SEARCH_VIDEOGAMES:
+      return {
+        ...state,
+        renderedVideogames: [...action.payload]
       }
     default:
       return { ...state };

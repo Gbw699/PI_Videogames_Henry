@@ -2,6 +2,7 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
 export const ORDER_VIDEOGAMES = "ORDER_VIDEOGAMES";
 export const ORDER_RATING = "ORDER_RATING";
+export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
 
 export const getVideogames = () => {
   return async (dispatch) => {
@@ -24,4 +25,15 @@ export const orderVideogames = (value) => {
 
 export const orderRating = (value) => {
   return { type: ORDER_RATING, payload: value };
+};
+
+export const searchVideogames = (value) => {
+  return async (dispatch) => {
+    await fetch(`http://localhost:3001/videogames?name=${value}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) window.alert(data.error);
+        else dispatch({ type: SEARCH_VIDEOGAMES, payload: data });
+      });
+  };
 };
