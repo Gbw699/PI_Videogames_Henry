@@ -1,7 +1,7 @@
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
 export const ORDER_VIDEOGAMES = "ORDER_VIDEOGAMES";
-export const ORDER_RATING = "ORDER_RATING"
+export const ORDER_RATING = "ORDER_RATING";
 
 export const getVideogames = () => {
   return async (dispatch) => {
@@ -23,5 +23,5 @@ export const orderVideogames = (value) => {
 };
 
 export const orderRating = (value) => {
-  return {type:ORDER_RATING, payload: value}
-}
+  return { type: ORDER_RATING, payload: value };
+};

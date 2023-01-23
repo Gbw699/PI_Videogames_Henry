@@ -3,12 +3,15 @@ import {
   FILTER_VIDEOGAMES,
   ORDER_VIDEOGAMES,
   ORDER_RATING,
+  GET_VIDEOGAME_BY_ID,
+  RESTART_DETAIL_VIDEOGAME,
 } from "./actions";
 
 const initialState = {
   allVideogames: [],
   renderedVideogames: [],
   filteredVideogames: [],
+  detailVideogame: {},
 };
 
 export default function reducer(state = initialState, action) {
