@@ -7,6 +7,7 @@ import {
 } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Nav() {
   const dispatch = useDispatch();
@@ -87,6 +88,9 @@ export default function Nav() {
         }
       />
       <button onClick={handleDispatchSearch}>Search</button>
+      <NavLink to={"/form"}>
+        <button>Create new videogame</button>
+      </NavLink>
     </div>
   );
 }

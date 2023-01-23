@@ -23,6 +23,9 @@ function App() {
         <Route path="/detail/:detailId">
           <Detail />
         </Route>
+        <Route path="/form">
+          <Form />
+        </Route>
 
         {/* <Route path="/home" element={<Videogames />} />
         <Route path="/detail/:detailId" element={<Detail />} />
