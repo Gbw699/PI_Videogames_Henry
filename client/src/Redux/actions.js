@@ -3,7 +3,7 @@ export const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
 export const ORDER_VIDEOGAMES = "ORDER_VIDEOGAMES";
 export const ORDER_RATING = "ORDER_RATING";
 export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
-export const RESET_SEARCH = "RESET_SEARCH"
+export const RESET_SEARCH = "RESET_SEARCH";
 
 export const getVideogames = () => {
   return async (dispatch) => {
@@ -40,5 +40,5 @@ export const searchVideogames = (value) => {
 };
 
 export const resetSearch = () => {
-  return {type: RESET_SEARCH}
-}
+  return { type: RESET_SEARCH };
+};

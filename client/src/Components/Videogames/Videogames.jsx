@@ -7,16 +7,16 @@ import Videogame from "../Videogame/Videogame";
 
 export default function Videogames() {
   const dispatch = useDispatch();
+  const allVideogames = useSelector((state) => state.allVideogames);
   const renderedVideogames = useSelector((state) => state.renderedVideogames);
-  
+
   useEffect(() => {
-    if (!renderedVideogames.length) {
+    if (!allVideogames.length) {
       dispatch(getVideogames());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderedVideogames]);
 
-  
   const videogame = renderedVideogames.map((videogame, index) => {
     return (
       <Videogame
@@ -30,5 +30,5 @@ export default function Videogames() {
     );
   });
 
-  return <div className={container }>{videogame}</div>;
+  return <div className={container}>{videogame}</div>;
 }
