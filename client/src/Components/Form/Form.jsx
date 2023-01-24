@@ -3,6 +3,7 @@ import { useState } from "react";
 import { validation } from "./validation";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres } from "../../Redux/actions";
+import { NavLink } from "react-router-dom";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -13,22 +14,15 @@ export default function Form() {
     description: "",
     released: "",
     rating: 0.0,
-    //genres[0].name
-    //genres: [],
-    //platforms[0].platform.name
-    //platforms: [],
   });
-  const [genres, setGenres] = useState([]);
-  console.log(genres);
-  const [platforms, setPlatforms] = useState([]);
   const [errors, setErrors] = useState({
     name: "",
     description: "",
     released: "",
-    rating: null,
-    //genres: [],
-    //platforms: [],
+    rating: "",
   });
+  const [genres, setGenres] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
 
   useEffect(() => {
     if (!allGenres.length) {
@@ -62,6 +56,10 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <NavLink to="/home">
+        <button>Return to home</button>
+      </NavLink>
+      <br />
       <label htmlFor="name">Name: </label>
       <input
         type="text"
@@ -70,15 +68,16 @@ export default function Form() {
         onChange={handleInputChange}
         placeholder="Ingresar nombre"
       />
+      {errors.name && <p>{errors.name}</p>}
       <br />
       <label htmlFor="description">Description: </label>
-      <input
-        type="text"
+      <textarea
         value={data.description}
         name="description"
         onChange={handleInputChange}
         placeholder="Ingresar descripción"
       />
+      {errors.description && <p>{errors.description}</p>}
       <br />
       <label htmlFor="released">Released: </label>
       <input
@@ -88,6 +87,7 @@ export default function Form() {
         onChange={handleInputChange}
         placeholder="Ingresar fecha de lanzamiento"
       />
+      {errors.released && <p>{errors.released}</p>}
       <br />
       <label htmlFor="rating">Rating: </label>
       <input
@@ -97,6 +97,7 @@ export default function Form() {
         onChange={handleInputChange}
         placeholder="Ingresar rating"
       />
+      {errors.rating && <p>{errors.rating}</p>}
       {/* ---------------------------genres------------------------------------ */}
       <div>
         <h3>Add genres</h3>
@@ -143,6 +144,7 @@ export default function Form() {
         />
         <br />
       </div>
+      <button type="submit" onClick={handleSubmit}>Crear videojuego</button>
     </form>
   );
 }

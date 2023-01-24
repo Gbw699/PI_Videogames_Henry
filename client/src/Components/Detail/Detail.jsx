@@ -22,7 +22,7 @@ export default function Detail() {
     <div>
       <h1>{videogame.name}</h1>
       <NavLink to={"/home"}>
-        <button>Volver</button>
+        <button>Return to home</button>
       </NavLink>
       <div>
         <img src={videogame.background_image} alt="img" />

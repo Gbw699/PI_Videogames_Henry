@@ -4,7 +4,7 @@ import LandingPage from "./Components/LandingPage/LandingPage.jsx";
 import Videogames from "./Components/Videogames/Videogames.jsx";
 import Detail from "./Components/Detail/Detail.jsx";
 import Form from "./Components/Form/Form.jsx";
-import { Routes, Route, useLocation, Switch } from "react-router-dom";
+import { Route, useLocation, Switch } from "react-router-dom";
 
 function App() {
   const location = useLocation();
