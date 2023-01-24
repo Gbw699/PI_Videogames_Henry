@@ -21,6 +21,7 @@ export default function Form() {
     released: "",
     rating: "",
   });
+
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
 
@@ -51,6 +52,32 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const objectToPost = {
+      ...data,
+      platforms: [...platforms],
+      genres: [...genres],
+    };
+    console.log(objectToPost);
+    if (errors.name || errors.description || errors.released || errors.rating) {
+      return window.alert("Debe completar correctamente el formulario");
+    } else {
+      return (async () => {
+        await fetch("http://localhost:3001/videogames", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...objectToPost }),
+        })
+          .then((response) => response.json())
+          .then((data) =>
+            window.alert(data.success ? data.success : data.error)
+          )
+          .catch((err) => {
+            window.alert(err.message);
+          });
+      })();
+    }
     //acá viene el dispatch al post
   };
 
@@ -144,7 +171,9 @@ export default function Form() {
         />
         <br />
       </div>
-      <button type="submit" onClick={handleSubmit}>Crear videojuego</button>
+      <button type="submit" onClick={handleSubmit}>
+        Crear videojuego
+      </button>
     </form>
   );
 }

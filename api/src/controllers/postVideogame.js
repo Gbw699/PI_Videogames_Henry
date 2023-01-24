@@ -10,15 +10,17 @@ const postVideogame = async (
   platforms,
   genres
 ) => {
-  const newVideogame = await Videogame.create(
-    {
-      name,
-      description,
-      released,
-      rating,
-      platforms,
-    }
-  );
+  const newVideogame = await Videogame.create({
+    name,
+    description,
+    released,
+    rating,
+    platforms,
+  });
+
+  const genreDb = await Genre.findAll({ where: { name: genres } });
+
+  newVideogame.addGenre(genreDb);
 
   //await newVideogame.createGenre({ name: genres });
   //puede ser que haya que cambiar createGenre por setGenre() cuando estén los generos en la base de datos

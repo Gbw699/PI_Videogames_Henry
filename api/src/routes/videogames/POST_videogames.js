@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
     return res.status(200).json(result);
     //{ success: "El personaje fue creado" }
   } catch (error) {
+    console.log("estoy acá");
     return res.status(400).json({ error: error.message });
   }
 });
