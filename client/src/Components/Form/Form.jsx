@@ -126,11 +126,19 @@ export default function Form() {
           onChange={handleInputPlatfomrs}
         />
         <br />
-        <label htmlFor="PlayStation 5">PlayStation 5</label>
+        <label htmlFor="Console">Console</label>
         <input
           type="checkbox"
           name="platforms"
-          value="PlayStation 5"
+          value="Console"
+          onChange={handleInputPlatfomrs}
+        />
+        <br />
+        <label htmlFor="Mobile">Mobile</label>
+        <input
+          type="checkbox"
+          name="platforms"
+          value="Mobile"
           onChange={handleInputPlatfomrs}
         />
         <br />
