@@ -1,5 +1,6 @@
 import {
   GET_VIDEOGAMES,
+  GET_GENRES,
   FILTER_VIDEOGAMES,
   ORDER_VIDEOGAMES,
   ORDER_RATING,
@@ -9,6 +10,7 @@ import {
 
 const initialState = {
   allVideogames: [],
+  allGenres: [],
   renderedVideogames: [],
   filteredVideogames: [],
   detailVideogame: {},
@@ -23,6 +25,11 @@ export default function reducer(state = initialState, action) {
         renderedVideogames: [...action.payload],
         filteredVideogames: [...action.payload],
       };
+    case GET_GENRES:
+      return {
+        ...state,
+        allGenres: [...action.payload]
+      }
     case FILTER_VIDEOGAMES:
       if (action.payload === "apiVideogames") {
         return {

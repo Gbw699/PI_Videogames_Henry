@@ -1,4 +1,5 @@
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
+export const GET_GENRES = "GET_GENRES";
 export const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
 export const ORDER_VIDEOGAMES = "ORDER_VIDEOGAMES";
 export const ORDER_RATING = "ORDER_RATING";
@@ -12,6 +13,17 @@ export const getVideogames = () => {
       .then((data) => {
         if (data.error) window.alert(data.error);
         else dispatch({ type: GET_VIDEOGAMES, payload: data });
+      });
+  };
+};
+
+export const getGenres = () => {
+  return async (dispatch) => {
+    await fetch("http://localhost:3001/genres")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) window.alert(data.error);
+        else dispatch({ type: GET_GENRES, payload: data });
       });
   };
 };

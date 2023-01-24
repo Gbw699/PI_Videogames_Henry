@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { validation } from "./validation";
+import { useDispatch, useSelector } from "react-redux";
+import { getGenres } from "../../Redux/actions";
 
 export default function Form() {
+  const dispatch = useDispatch();
+  const allGenres = useSelector((state) => state.allGenres);
+
   const [data, setData] = useState({
     name: "",
     description: "",
@@ -13,6 +19,7 @@ export default function Form() {
     //platforms: [],
   });
   const [genres, setGenres] = useState([]);
+  console.log(genres);
   const [platforms, setPlatforms] = useState([]);
   const [errors, setErrors] = useState({
     name: "",
@@ -22,6 +29,12 @@ export default function Form() {
     //genres: [],
     //platforms: [],
   });
+
+  useEffect(() => {
+    if (!allGenres.length) {
+      dispatch(getGenres());
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -87,160 +100,41 @@ export default function Form() {
       {/* ---------------------------genres------------------------------------ */}
       <div>
         <h3>Add genres</h3>
-        <label htmlFor="Action">Action</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Action"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Indie">Indie</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Indie"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Adventure">Adventure</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Adventure"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="RPG">RPG</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="RPG"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Strategy">Strategy</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Strategy"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Shooter">Shooter</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Shooter"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Casual">Casual</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Casual"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Simulation">Simulation</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Simulation"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Puzzle">Puzzle</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Puzzle"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Arcade">Arcade</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Arcade"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Platformer">Platformer</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Platformer"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Racing">Racing</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Racing"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Massively Multiplayer">Massively Multiplayer</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Massively Multiplayer"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Sports">Sports</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Sports"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Fighting">Fighting</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Fighting"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Family">Family</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Family"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Board Games">Board Games</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Board Games"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Educational">Educational</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Educational"
-          onChange={handleInputGenres}
-        />
-        <br />
-        <label htmlFor="Card">Card</label>
-        <input
-          type="checkbox"
-          name="genres"
-          value="Card"
-          onChange={handleInputGenres}
-        />
+        {allGenres?.map((obj, index) => {
+          return (
+            <label htmlFor={obj.name} key={index}>
+              {obj.name}
+              <input
+                type="checkbox"
+                name="genres"
+                value={obj.name}
+                onChange={handleInputGenres}
+              />
+              <br />
+            </label>
+          );
+        })}
       </div>
       {/* ---------------------------platforms--------------------------------- */}
-      <div></div>
+      <div>
+        <h3>Add platforms</h3>
+        <label htmlFor="PC">PC</label>
+        <input
+          type="checkbox"
+          name="platforms"
+          value="PC"
+          onChange={handleInputPlatfomrs}
+        />
+        <br />
+        <label htmlFor="PlayStation 5">PlayStation 5</label>
+        <input
+          type="checkbox"
+          name="platforms"
+          value="PlayStation 5"
+          onChange={handleInputPlatfomrs}
+        />
+        <br />
+      </div>
     </form>
   );
 }
