@@ -14,7 +14,15 @@ const getDbVideogames = async () => {
 };
 
 const getDbVideogameByPk = async (id) => {
-  const result = await Videogame.findByPk(id);
+  const result = await Videogame.findByPk(id, {
+    include: [
+      {
+        model: Genre,
+        attributes: ["name"],
+      },
+    ],
+  });
+
   return result;
 };
 

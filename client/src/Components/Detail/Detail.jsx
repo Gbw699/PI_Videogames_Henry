@@ -37,7 +37,11 @@ export default function Detail() {
       <p value="rating">{videogame.rating}</p>
       <ul>
         {videogame.platforms?.map((obj) => {
-          return <li key={obj.platform.name}>{obj.platform.name}</li>;
+          if (obj.platform) {
+            return <li key={obj.platform.name}>{obj.platform.name}</li>;
+          } else {
+            return <li key={obj}>{obj}</li>;
+          }
         })}
       </ul>
     </div>
