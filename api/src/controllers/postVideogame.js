@@ -22,10 +22,7 @@ const postVideogame = async (
 
   newVideogame.addGenre(genreDb);
 
-  //await newVideogame.createGenre({ name: genres });
-  //puede ser que haya que cambiar createGenre por setGenre() cuando estén los generos en la base de datos
-
-  return { success: "El personaje fue creado" };
+  return { success: "El videojuego fue creado" };
 };
 
 module.exports = {

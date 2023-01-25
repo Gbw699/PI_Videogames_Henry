@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { validation } from "./validation";
 import { useDispatch, useSelector } from "react-redux";
-import { getGenres } from "../../Redux/actions";
+import { getGenres, getVideogames } from "../../Redux/actions";
 import { NavLink } from "react-router-dom";
 
 export default function Form() {
@@ -38,16 +38,16 @@ export default function Form() {
   const handleInputGenres = (e) => {
     //genres[0].name
     if (!e.target.checked)
-      setGenres([...genres.filter((obj) => obj.name !== e.target.value)]);
-    else setGenres([...genres, { name: e.target.value }]);
+      setGenres([...genres.filter((element) => element !== e.target.value)]);
+    else setGenres([...genres,  e.target.value ]);
   };
   const handleInputPlatfomrs = (e) => {
     //platforms[0].platform.name
     if (!e.target.checked)
       setPlatforms([
-        ...platforms.filter((obj) => obj.platform.name !== e.target.value),
+        ...platforms.filter((element) => element !== e.target.value),
       ]);
-    else setPlatforms([...platforms, { platform: { name: e.target.value } }]);
+    else setPlatforms([...platforms, e.target.value ]);
   };
 
   const handleSubmit = (e) => {
@@ -76,6 +76,7 @@ export default function Form() {
           .catch((err) => {
             window.alert(err.message);
           });
+        dispatch(getVideogames())
       })();
     }
     //acá viene el dispatch al post
