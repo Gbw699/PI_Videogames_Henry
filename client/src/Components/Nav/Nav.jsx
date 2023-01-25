@@ -1,5 +1,6 @@
 import {
   filterVideogames,
+  filterByGenre,
   orderVideogames,
   orderRating,
   searchVideogames,
@@ -17,7 +18,9 @@ export default function Nav() {
     dispatch(filterVideogames(e.target.value));
   };
 
-  const handleDispatchGenre = (e) => {};
+  const handleDispatchGenre = (e) => {
+    dispatch(filterByGenre(e.target.value));
+  };
 
   const handleDispatchVideogames = (e) => {
     dispatch(orderVideogames(e.target.value));

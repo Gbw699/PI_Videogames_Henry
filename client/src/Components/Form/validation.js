@@ -1,4 +1,4 @@
-const regexName = /^[a-zA-Z0-9\s]{3,25}$/;
+const regexName = /^[A-Z]+[a-z0-9\s]{3,25}$/;
 const regexDescription = /^[^$%&|<>#]*$/;
 const regexReleased = /^\d{4}([-])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/;
 const regexRating = /^[0-4]\.[0-9]{0,2}$/;
@@ -7,7 +7,7 @@ export const validation = (inputs) => {
   const errors = {};
   if (!regexName.test(inputs.name) && inputs.name) {
     errors.name =
-      "El nombre no debe contener caracteres especiales y debe tener entre 3 y 25 caracteres";
+      "El nombre debe comenzar en mayúscula, no debe contener caracteres especiales y debe tener entre 3 y 25 caracteres";
   }
   if (!regexDescription.test(inputs.description) && inputs.description) {
     errors.description =

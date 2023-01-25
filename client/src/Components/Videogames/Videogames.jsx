@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVideogames } from "../../Redux/actions";
 // eslint-disable-next-line no-unused-vars
 import Videogame from "../Videogame/Videogame";
+import Nav from "../Nav/Nav";
 
 export default function Videogames() {
   const dispatch = useDispatch();
@@ -30,5 +31,10 @@ export default function Videogames() {
     );
   });
 
-  return <div className={container}>{videogame}</div>;
+  return (
+    <>
+      <Nav />
+      <div className={container}>{videogame}</div>
+    </>
+  );
 }

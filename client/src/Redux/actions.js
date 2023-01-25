@@ -1,6 +1,7 @@
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_GENRES = "GET_GENRES";
 export const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const ORDER_VIDEOGAMES = "ORDER_VIDEOGAMES";
 export const ORDER_RATING = "ORDER_RATING";
 export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
@@ -30,6 +31,10 @@ export const getGenres = () => {
 
 export const filterVideogames = (value) => {
   return { type: FILTER_VIDEOGAMES, payload: value };
+};
+
+export const filterByGenre = (value) => {
+  return { type: FILTER_BY_GENRE, payload: value };
 };
 
 export const orderVideogames = (value) => {

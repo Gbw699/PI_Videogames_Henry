@@ -2,6 +2,7 @@ import {
   GET_VIDEOGAMES,
   GET_GENRES,
   FILTER_VIDEOGAMES,
+  FILTER_BY_GENRE,
   ORDER_VIDEOGAMES,
   ORDER_RATING,
   SEARCH_VIDEOGAMES,
@@ -12,8 +13,8 @@ const initialState = {
   allVideogames: [],
   allGenres: [],
   renderedVideogames: [],
-  filteredVideogames: [],
-  detailVideogame: {},
+  toOrderRenderedVideogames: [],
+  toFilterRenderedVideogames: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,19 +24,25 @@ export default function reducer(state = initialState, action) {
         ...state,
         allVideogames: [...action.payload],
         renderedVideogames: [...action.payload],
-        filteredVideogames: [...action.payload],
+        toOrderRenderedVideogames: [...action.payload],
+        toFilterRenderedVideogames: [...action.payload],
       };
     case GET_GENRES:
       return {
         ...state,
-        allGenres: [...action.payload]
-      }
+        allGenres: [...action.payload],
+      };
     case FILTER_VIDEOGAMES:
       if (action.payload === "apiVideogames") {
         return {
           ...state,
           renderedVideogames: [
-            ...state.filteredVideogames.filter(
+            ...state.toFilterRenderedVideogames.filter(
+              (videogame) => typeof videogame.id === "number"
+            ),
+          ],
+          toOrderRenderedVideogames: [
+            ...state.toFilterRenderedVideogames.filter(
               (videogame) => typeof videogame.id === "number"
             ),
           ],
@@ -44,7 +51,12 @@ export default function reducer(state = initialState, action) {
         return {
           ...state,
           renderedVideogames: [
-            ...state.filteredVideogames.filter(
+            ...state.toFilterRenderedVideogames.filter(
+              (videogame) => typeof videogame.id !== "number"
+            ),
+          ],
+          toOrderRenderedVideogames: [
+            ...state.toFilterRenderedVideogames.filter(
               (videogame) => typeof videogame.id !== "number"
             ),
           ],
@@ -52,42 +64,17 @@ export default function reducer(state = initialState, action) {
       } else {
         return {
           ...state,
-          renderedVideogames: [...state.allVideogames],
+          renderedVideogames: [...state.toFilterRenderedVideogames],
         };
       }
-    case ORDER_VIDEOGAMES:
-      if (action.payload === "upward") {
+    case FILTER_BY_GENRE:
+      if (action.payload !== "base") {
         return {
           ...state,
           renderedVideogames: [
-            ...state.renderedVideogames.sort((videogame1, videogame2) => {
-              return (
-                videogame1.name.charCodeAt() - videogame2.name.charCodeAt()
-              );
-            }),
-          ],
-          filteredVideogames: [
-            ...state.filteredVideogames.sort((videogame1, videogame2) => {
-              return (
-                videogame1.name.charCodeAt() - videogame2.name.charCodeAt()
-              );
-            }),
-          ],
-        };
-      } else if (action.payload === "downward") {
-        return {
-          ...state,
-          renderedVideogames: [
-            ...state.renderedVideogames.sort((videogame1, videogame2) => {
-              return (
-                videogame2.name.charCodeAt() - videogame1.name.charCodeAt()
-              );
-            }),
-          ],
-          filteredVideogames: [
-            ...state.filteredVideogames.sort((videogame1, videogame2) => {
-              return (
-                videogame2.name.charCodeAt() - videogame1.name.charCodeAt()
+            ...state.toFilterRenderedVideogames.filter((videogame) => {
+              return videogame.genres.some(
+                (obj) => obj.name === action.payload
               );
             }),
           ],
@@ -95,8 +82,54 @@ export default function reducer(state = initialState, action) {
       } else {
         return {
           ...state,
-          renderedVideogames: [...state.filteredVideogames],
-          filteredVideogames: [...state.allVideogames],
+          renderedVideogames: [...state.toFilterRenderedVideogames],
+        };
+      }
+    case ORDER_VIDEOGAMES:
+      if (action.payload === "upward") {
+        return {
+          ...state,
+          renderedVideogames: [
+            ...state.toOrderRenderedVideogames.sort(
+              (videogame1, videogame2) => {
+                return (
+                  videogame1.name.charCodeAt() - videogame2.name.charCodeAt()
+                );
+              }
+            ),
+          ],
+          // toFilterRenderedVideogames: [
+          //   ...state.toFilterRenderedVideogames.sort((videogame1, videogame2) => {
+          //     return (
+          //       videogame1.name.charCodeAt() - videogame2.name.charCodeAt()
+          //     );
+          //   }),
+          // ],
+        };
+      } else if (action.payload === "downward") {
+        return {
+          ...state,
+          renderedVideogames: [
+            ...state.toOrderRenderedVideogames.sort(
+              (videogame1, videogame2) => {
+                return (
+                  videogame2.name.charCodeAt() - videogame1.name.charCodeAt()
+                );
+              }
+            ),
+          ],
+          // toFilterRenderedVideogames: [
+          //   ...state.toFilterRenderedVideogames.sort((videogame1, videogame2) => {
+          //     return (
+          //       videogame2.name.charCodeAt() - videogame1.name.charCodeAt()
+          //     );
+          //   }),
+          // ],
+        };
+      } else {
+        return {
+          ...state,
+          renderedVideogames: [...state.toOrderRenderedVideogames],
         };
       }
     case ORDER_RATING:
@@ -108,11 +141,13 @@ export default function reducer(state = initialState, action) {
               return videogame1.rating - videogame2.rating;
             }),
           ],
-          filteredVideogames: [
-            ...state.filteredVideogames.sort((videogame1, videogame2) => {
-              return videogame1.rating - videogame2.rating;
-            }),
-          ],
+          // toFilterRenderedVideogames: [
+          //   ...state.toFilterRenderedVideogames.sort(
+          //     (videogame1, videogame2) => {
+          //       return videogame1.rating - videogame2.rating;
+          //     }
+          //   ),
+          // ],
         };
       } else if (action.payload === "downward") {
         return {
@@ -122,17 +157,18 @@ export default function reducer(state = initialState, action) {
               return videogame2.rating - videogame1.rating;
             }),
           ],
-          filteredVideogames: [
-            ...state.filteredVideogames.sort((videogame1, videogame2) => {
-              return videogame2.rating - videogame1.rating;
-            }),
-          ],
+          // toFilterRenderedVideogames: [
+          //   ...state.toFilterRenderedVideogames.sort(
+          //     (videogame1, videogame2) => {
+          //       return videogame2.rating - videogame1.rating;
+          //     }
+          //   ),
+          // ],
         };
       } else {
         return {
           ...state,
-          renderedVideogames: [...state.filteredVideogames],
-          filteredVideogames: [...state.allVideogames],
+          renderedVideogames: [...state.toOrderRenderedVideogames],
         };
       }
     case SEARCH_VIDEOGAMES:
@@ -143,7 +179,7 @@ export default function reducer(state = initialState, action) {
     case RESET_SEARCH:
       return {
         ...state,
-        renderedVideogames: [...state.filteredVideogames],
+        renderedVideogames: [...state.toFilterRenderedVideogames],
       };
     default:
       return { ...state };

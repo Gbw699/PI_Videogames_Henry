@@ -29,6 +29,7 @@ export default function Form() {
     if (!allGenres.length) {
       dispatch(getGenres());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleInputChange = (e) => {
