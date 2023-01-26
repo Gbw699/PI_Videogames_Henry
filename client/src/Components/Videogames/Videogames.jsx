@@ -11,6 +11,7 @@ export default function Videogames() {
   const allVideogames = useSelector((state) => state.allVideogames);
   const renderedVideogames = useSelector((state) => state.renderedVideogames);
   const [currentPage, setCurrentPage] = useState(1);
+
   const pageSize = 15;
 
   let currentVideogames = renderedVideogames.slice(
@@ -23,6 +24,7 @@ export default function Videogames() {
       dispatch(getVideogames());
     }
     setCurrentPage(1);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderedVideogames]);
 

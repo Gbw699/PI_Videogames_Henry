@@ -5,6 +5,7 @@ import {
   orderRating,
   searchVideogames,
   resetSearch,
+  resetVideogames,
 } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -34,17 +35,24 @@ export default function Nav() {
     dispatch(searchVideogames(videogame));
   };
 
+  const handleReset = () => {
+    dispatch(resetVideogames());
+  };
   return (
     <div>
       <label htmlFor="filter">Choose a Filter: </label>
       <select name="filter" id="filter" onChange={handleDispatchFilter}>
-        <option value="base">--Please choose an option--</option>
+        <option value="base" hidden={true}>
+          --Display options--
+        </option>
         <option value="apiVideogames">Known videogames</option>
         <option value="dbVideogames">Created videogames</option>
       </select>
       <label htmlFor="genres">Choose a Genre: </label>
       <select name="genres" id="genres" onChange={handleDispatchGenre}>
-        <option value="base">--Please choose an option--</option>
+        <option value="base" hidden={true}>
+          --Display options--
+        </option>
         <option value="Action">Action</option>
         <option value="Indie">Indie</option>
         <option value="Adventure">Adventure</option>
@@ -71,13 +79,17 @@ export default function Nav() {
         id="videogames"
         onChange={handleDispatchVideogames}
       >
-        <option value="base">--Please choose an option--</option>
+        <option value="base" hidden={true}>
+          --Display options--
+        </option>
         <option value="upward">A-Z</option>
         <option value="downward">Z-A</option>
       </select>
       <label htmlFor="rating">Order by Rating: </label>
       <select name="rating" id="rating" onChange={handleDispatchRating}>
-        <option value="base">--Please choose an option--</option>
+        <option value="base" hidden={true}>
+          --Display options--
+        </option>
         <option value="upward">1-5</option>
         <option value="downward">5-1</option>
       </select>
@@ -91,6 +103,7 @@ export default function Nav() {
         }
       />
       <button onClick={handleDispatchSearch}>Search</button>
+      <button onClick={handleReset}>Reset</button>
       <NavLink to={"/form"}>
         <button>Create new videogame</button>
       </NavLink>

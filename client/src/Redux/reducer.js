@@ -7,6 +7,7 @@ import {
   ORDER_RATING,
   SEARCH_VIDEOGAMES,
   RESET_SEARCH,
+  RESET_VIDEOGAMES,
 } from "./actions";
 
 const initialState = {
@@ -180,6 +181,13 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         renderedVideogames: [...state.toFilterRenderedVideogames],
+      };
+    case RESET_VIDEOGAMES:
+      return {
+        ...state,
+        renderedVideogames: [...state.allVideogames],
+        toOrderRenderedVideogames: [...state.allVideogames],
+        toFilterRenderedVideogames: [...state.allVideogames],
       };
     default:
       return { ...state };
