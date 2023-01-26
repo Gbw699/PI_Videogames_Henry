@@ -1,4 +1,5 @@
 const regexName = /^[A-Z]+[a-z0-9\s]{3,25}$/;
+//agragar limite de caracteres a la descripción
 const regexDescription = /^[^$%&|<>#]*$/;
 const regexReleased = /^\d{4}([-])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/;
 const regexRating = /^[0-4]\.[0-9]{0,2}$/;

@@ -1,5 +1,6 @@
 import "./App.css";
 import LandingPage from "./Components/LandingPage/LandingPage.jsx";
+import Nav from "./Components/Nav/Nav";
 import Videogames from "./Components/Videogames/Videogames.jsx";
 import Detail from "./Components/Detail/Detail.jsx";
 import Form from "./Components/Form/Form.jsx";
@@ -14,6 +15,7 @@ function App() {
           <LandingPage />
         </Route>
         <Route path="/home">
+          <Nav />
           <Videogames />
         </Route>
         <Route path="/detail/:detailId">
