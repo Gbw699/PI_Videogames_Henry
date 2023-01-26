@@ -29,7 +29,7 @@ export default function Form() {
     if (!allGenres.length) {
       dispatch(getGenres());
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleInputChange = (e) => {
@@ -40,7 +40,7 @@ export default function Form() {
     //genres[0].name
     if (!e.target.checked)
       setGenres([...genres.filter((element) => element !== e.target.value)]);
-    else setGenres([...genres,  e.target.value ]);
+    else setGenres([...genres, e.target.value]);
   };
   const handleInputPlatfomrs = (e) => {
     //platforms[0].platform.name
@@ -48,7 +48,7 @@ export default function Form() {
       setPlatforms([
         ...platforms.filter((element) => element !== e.target.value),
       ]);
-    else setPlatforms([...platforms, e.target.value ]);
+    else setPlatforms([...platforms, e.target.value]);
   };
 
   const handleSubmit = (e) => {
@@ -61,6 +61,15 @@ export default function Form() {
     console.log(objectToPost);
     if (errors.name || errors.description || errors.released || errors.rating) {
       return window.alert("Debe completar correctamente el formulario");
+    } else if (
+      !data.name ||
+      !data.description ||
+      !data.released ||
+      !data.rating ||
+      !genres.length ||
+      !platforms.length
+    ) {
+      return window.alert("Debe completar todos los campos del formulario");
     } else {
       return (async () => {
         await fetch("http://localhost:3001/videogames", {
@@ -77,10 +86,9 @@ export default function Form() {
           .catch((err) => {
             window.alert(err.message);
           });
-        dispatch(getVideogames())
+        dispatch(getVideogames());
       })();
     }
-    //acá viene el dispatch al post
   };
 
   return (
