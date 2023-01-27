@@ -1,3 +1,5 @@
+import img from "../../Img/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg";
+
 import style from "./Videogames.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,27 +38,30 @@ export default function Videogames() {
   };
 
   return (
-    <div className={style.container}>
-      <Nav/>
-      <Pagination
-        currentPage={currentPage}
-        totalCount={renderedVideogames.length}
-        pageSize={pageSize}
-        onPageChange={onPageChange}
-      />
-      <div className={style.containerVideogames}>
-        {currentVideogames?.map((videogame) => {
-          return (
-            <Videogame
-              id={videogame.id}
-              name={videogame.name}
-              background_image={videogame.background_image}
-              genres={videogame.genres}
-              rating={videogame.rating}
-              key={videogame.id}
-            />
-          );
-        })}
+    <div className={style.imgContainer}>
+      <img className={style.img} src={img} alt="img" />
+      <div className={style.container}>
+        <Nav />
+        <Pagination
+          currentPage={currentPage}
+          totalCount={renderedVideogames.length}
+          pageSize={pageSize}
+          onPageChange={onPageChange}
+        />
+        <div className={style.containerVideogames}>
+          {currentVideogames?.map((videogame) => {
+            return (
+              <Videogame
+                id={videogame.id}
+                name={videogame.name}
+                background_image={videogame.background_image}
+                genres={videogame.genres}
+                rating={videogame.rating}
+                key={videogame.id}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
