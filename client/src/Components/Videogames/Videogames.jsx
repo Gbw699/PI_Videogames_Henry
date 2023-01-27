@@ -32,19 +32,6 @@ export default function Videogames() {
     setCurrentPage(pageNumber);
   };
 
-  // const videogame = currentVideogames.map((videogame, index) => {
-  //   return (
-  //     <Videogame
-  //       id={videogame.id}
-  //       name={videogame.name}
-  //       background_image={videogame.background_image}
-  //       genres={videogame.genres}
-  //       rating={videogame.rating}
-  //       key={index}
-  //     />
-  //   );
-  // });
-
   return (
     <>
       <Pagination
@@ -70,7 +57,3 @@ export default function Videogames() {
     </>
   );
 }
-//totalCount = cantidad total de videojuegos
-//currentPage = página en la que estoy posicionado
-//pageSize = cantidad de videojuegos por página
-//onPageChange = callback invocada con la actualización de página, cuando se cambia la página
