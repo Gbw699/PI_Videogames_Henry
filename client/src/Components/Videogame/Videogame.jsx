@@ -1,21 +1,25 @@
-import { imgContainer, img } from "./Videogame.module.css";
+import style from "./Videogame.module.css";
 import { NavLink } from "react-router-dom";
 
 export default function Videogame(props) {
   return (
-    <div className="container">
+    <div className={style.container}>
       <NavLink to={`/detail/${props.id}`}>
-        <h3>{props.name}</h3>
+        <h3 className={style.title}>{props.name}</h3>
       </NavLink>
-      <div className={imgContainer}>
-        <img className={img} src={props.background_image} alt="img" />
+      <div className={style.imgContainer}>
+        <img className={style.img} src={props.background_image} loading="lazy" alt="" />
       </div>
-      <ul>
+      <div className={style.pContainer}>
         {props.genres?.map((obj) => {
-          return <li key={obj.name}>{obj.name}</li>;
+          return (
+            <p className={style.genre} key={obj.name}>
+              {obj.name}
+            </p>
+          );
         })}
-      </ul>
-      <h2>{props.rating}</h2>
+      </div>
+      <h3 className={style.rating}>{props.rating}</h3>
     </div>
   );
 }

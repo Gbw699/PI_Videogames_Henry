@@ -14,7 +14,6 @@ function App() {
           <LandingPage />
         </Route>
         <Route path="/home">
-          <Nav />
           <Videogames />
         </Route>
         <Route path="/detail/:detailId">

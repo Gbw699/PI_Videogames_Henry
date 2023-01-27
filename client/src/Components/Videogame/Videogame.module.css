@@ -1,8 +1,78 @@
-.imgContainer {}
+.container {
+    width: 25rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(../../Img/controlar.png), linear-gradient(125deg, #5B0C39 20%, #091434);
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom right, left;
+    background-size: 5rem, auto;
+    padding: 0.2rem;
+    border-radius: 15px;
+    border: 2px solid rgb(91, 12, 57);
+    margin: 1rem;
+    transition: ease-in-out 200ms;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+a {
+    text-decoration: none;
+}
+
+.title {
+    font-size: 18pt;
+    color: #DE1285;
+    text-decoration: underline;
+}
+
+.title:hover {
+    color: rgba(222, 18, 133, 0.5);
+}
+
+.imgContainer {
+    width: 24rem;
+    height: 24rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border: 5px solid rgba(9, 20, 52, 0.5);
+    border-radius: 5px;
+    background-image: url(../../Img/joystick.svg), linear-gradient(125deg, #AEC3FF 15%, #DE1285);
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
 
 .img {
-    width: 25rem;
-    height: auto;
+    width: auto;
+    height: 310px;
+    image-rendering: optimizeSpeed;
+}
+
+.pContainer {
+    width: 24rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.genre {
+    font-size: 16pt;
+    color: #AEC3FF;
+    cursor: default;
+}
+
+
+.rating {
+    font-size: 18pt;
+    color: #DE1285;
 }
 
 /*overflow hidden, object-fit y propiedad lazy para imagenes*/

@@ -1,10 +1,11 @@
-import { container } from "./Videogames.module.css";
+import style from "./Videogames.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideogames } from "../../Redux/actions";
 // eslint-disable-next-line no-unused-vars
 import Videogame from "../Videogame/Videogame";
 import Pagination from "../Pagination/Pagination";
+import Nav from "../Nav/Nav";
 
 export default function Videogames() {
   const dispatch = useDispatch();
@@ -14,10 +15,12 @@ export default function Videogames() {
 
   const pageSize = 15;
 
-  let currentVideogames = renderedVideogames.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
+  let currentVideogames = [
+    ...renderedVideogames.slice(
+      (currentPage - 1) * pageSize,
+      currentPage * pageSize
+    ),
+  ];
 
   useEffect(() => {
     if (!allVideogames.length) {
@@ -33,15 +36,16 @@ export default function Videogames() {
   };
 
   return (
-    <>
+    <div className={style.container}>
+      <Nav/>
       <Pagination
         currentPage={currentPage}
         totalCount={renderedVideogames.length}
         pageSize={pageSize}
         onPageChange={onPageChange}
       />
-      <div className={container}>
-        {currentVideogames?.map((videogame, index) => {
+      <div className={style.containerVideogames}>
+        {currentVideogames?.map((videogame) => {
           return (
             <Videogame
               id={videogame.id}
@@ -49,11 +53,11 @@ export default function Videogames() {
               background_image={videogame.background_image}
               genres={videogame.genres}
               rating={videogame.rating}
-              key={index}
+              key={videogame.id}
             />
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
