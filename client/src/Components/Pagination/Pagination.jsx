@@ -1,3 +1,5 @@
+import style from "./Pagination.module.css";
+
 export default function Pagination({
   currentPage,
   totalCount,
@@ -13,18 +15,25 @@ export default function Pagination({
   return (
     <div>
       <button
+        className={style.btn}
         onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)}
       >
         Prev
       </button>
       {pageNumbers?.map((number, index) => {
         return (
-          <button key={index} onClick={() => onPageChange(number)}>
+          <button
+            className={style.btnNumber}
+            key={index}
+            aria-current={currentPage === number}
+            onClick={() => onPageChange(number)}
+          >
             {number}
           </button>
         );
       })}
       <button
+        className={style.btn}
         onClick={() =>
           currentPage !== pageNumbers[pageNumbers.length - 1] &&
           onPageChange(currentPage + 1)
