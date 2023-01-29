@@ -39,7 +39,7 @@ body {
 }
 
 .btn:hover {
-    /* background-color: rgba(0, 49, 179, 0.3); */
+    border: 1.5px solid rgba(222, 18, 133, 1);
     cursor: pointer;
     transform: scale(1.2) rotate(7.5deg);
 }
