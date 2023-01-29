@@ -13,6 +13,7 @@
 
 .btn:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .btnNumber {
@@ -29,9 +30,10 @@
 }
 
 .btnNumber:not([aria-current="false"]) {
-    background-color: rgb(91, 12, 57)
+    background-color: rgba(91, 12, 57, 0.7)
 }
 
 .btnNumber:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
