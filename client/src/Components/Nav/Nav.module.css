@@ -64,7 +64,7 @@
     border: 0.5px solid rgba(222, 18, 133, 0.6);
     box-shadow: 0px 0px 5px #DE1285;
     margin-right: 5px;
-    font-size: 14pt;
+    font-size: 16pt;
     padding-left: 0.8rem;
 }
 
@@ -74,6 +74,11 @@
 
 .input::placeholder {
     color: #AEC3FF;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.input:read-write {
+    font-family: 'Shadows Into Light', cursive;
 }
 
 .searchContainer {
