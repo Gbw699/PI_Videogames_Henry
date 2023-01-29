@@ -25,6 +25,11 @@
     border-radius: 8px;
     border: 0.5px solid rgba(222, 18, 133, 0.6);
     box-shadow: 0px 0px 10px #DE1285;
+    outline: transparent;
+}
+
+.selects:focus {
+    border: 2px solid rgba(222, 18, 133, 1);
 }
 
 .selects:hover {
@@ -66,6 +71,11 @@
     margin-right: 5px;
     font-size: 16pt;
     padding-left: 0.8rem;
+    outline: transparent;
+}
+
+.input:focus {
+    border: 2px solid rgba(222, 18, 133, 1);
 }
 
 .input:hover {

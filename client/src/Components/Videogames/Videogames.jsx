@@ -1,5 +1,4 @@
 import img from "../../Img/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg";
-
 import style from "./Videogames.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

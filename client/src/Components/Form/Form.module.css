@@ -1,0 +1,84 @@
+.imgContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DE1285;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    text-decoration: underline;
+    font-size: 28pt;
+    margin-bottom: 0.8rem;
+}
+
+.subtitles {
+    font-size: 20pt;
+    font-weight: 400;
+}
+
+.btn {
+    margin: 0.5rem;
+    padding: 15px 20px;
+    background-color: rgba(9, 20, 52, 0.5);
+    color: #AEC3FF;
+    font-size: 14pt;
+    border: 0.5px solid rgba(174, 195, 255, 0.6);
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px #AEC3FF;
+    transition: ease-in-out 200mg;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    border: 2px solid rgba(174, 195, 255, 1);
+}
+
+.inputsContainer {
+    border: 1px solid black;
+    width: 95vw;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    margin-bottom: 2rem;
+    background-image: url(https://www.toptal.com/designers/subtlepatterns/uploads/memphis-mini-dark.png);
+    background-position: 50%;
+    border-radius: 20px;
+    border: 0.5px solid rgba(222, 18, 133, 0.6);
+    box-shadow: 0px 0px 15px #DE1285;
+}
+
+.inputContainer {
+    margin: 1rem 0 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.genresContainer {
+    display: flex
+}
+
+.platfomrsContainer {
+    display: flex;
+}

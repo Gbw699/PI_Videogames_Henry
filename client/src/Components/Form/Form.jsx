@@ -1,3 +1,5 @@
+import style from "./Form.module.css";
+import img from "../../Img/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg";
 import { useEffect } from "react";
 import { useState } from "react";
 import { validation } from "./validation";
@@ -58,7 +60,6 @@ export default function Form() {
       platforms: [...platforms],
       genres: [...genres],
     };
-    console.log(objectToPost);
     if (errors.name || errors.description || errors.released || errors.rating) {
       return window.alert("Debe completar correctamente el formulario");
     } else if (
@@ -92,98 +93,118 @@ export default function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <NavLink to="/home">
-        <button>Return to home</button>
-      </NavLink>
-      <br />
-      <label htmlFor="name">Name: </label>
-      <input
-        type="text"
-        value={data.name}
-        name="name"
-        onChange={handleInputChange}
-        placeholder="Ingresar nombre"
-      />
-      {errors.name && <p>{errors.name}</p>}
-      <br />
-      <label htmlFor="description">Description: </label>
-      <textarea
-        value={data.description}
-        name="description"
-        onChange={handleInputChange}
-        placeholder="Ingresar descripción"
-      />
-      {errors.description && <p>{errors.description}</p>}
-      <br />
-      <label htmlFor="released">Released: </label>
-      <input
-        type="text"
-        value={data.released}
-        name="released"
-        onChange={handleInputChange}
-        placeholder="Ingresar fecha de lanzamiento"
-      />
-      {errors.released && <p>{errors.released}</p>}
-      <br />
-      <label htmlFor="rating">Rating: </label>
-      <input
-        type="number"
-        value={data.rating}
-        name="rating"
-        onChange={handleInputChange}
-        placeholder="Ingresar rating"
-      />
-      {errors.rating && <p>{errors.rating}</p>}
-      {/* ---------------------------genres------------------------------------ */}
-      <div>
-        <h3>Add genres</h3>
-        {allGenres?.map((obj, index) => {
-          return (
-            <label htmlFor={obj.name} key={index}>
-              {obj.name}
+    <div className={style.imgContainer}>
+      <img className={style.img} src={img} alt="img" />
+      <div className={style.container}>
+        <h1 className={style.title}>Create Videogames</h1>
+        <NavLink to="/home">
+          <button className={style.btn}>Return to home</button>
+        </NavLink>
+        <form className={style.inputsContainer} onSubmit={handleSubmit}>
+          <div className={style.inputContainer}>
+            <label className={style.subtitles} htmlFor="name">
+              Name:
+            </label>
+            <input
+              type="text"
+              value={data.name}
+              name="name"
+              onChange={handleInputChange}
+              placeholder="Ingresar nombre"
+            />
+            {errors.name && <p>{errors.name}</p>}
+          </div>
+          <div className={style.inputContainer}>
+            <label className={style.subtitles} htmlFor="description">
+              Description:
+            </label>
+            <textarea
+              value={data.description}
+              name="description"
+              onChange={handleInputChange}
+              placeholder="Ingresar descripción"
+            />
+            {errors.description && <p>{errors.description}</p>}
+          </div>
+          <div className={style.inputContainer}>
+            <label className={style.subtitles} htmlFor="released">
+              Released:
+            </label>
+            <input
+              type="text"
+              value={data.released}
+              name="released"
+              onChange={handleInputChange}
+              placeholder="Ingresar fecha de lanzamiento"
+            />
+            {errors.released && <p>{errors.released}</p>}
+          </div>
+          <div className={style.inputContainer}>
+            <label className={style.subtitles} htmlFor="rating">
+              Rating:
+            </label>
+            <input
+              type="number"
+              value={data.rating}
+              name="rating"
+              onChange={handleInputChange}
+              placeholder="Ingresar rating"
+            />
+            {errors.rating && <p>{errors.rating}</p>}
+          </div>
+          {/* ---------------------------genres------------------------------------ */}
+          <div className={style.inputContainer}>
+            <label className={style.subtitles}>Add genres</label>
+            <div className={style.genresContainer}>
+              {allGenres?.map((obj, index) => {
+                return (
+                  <label htmlFor={obj.name} key={index}>
+                    {obj.name}
+                    <input
+                      type="checkbox"
+                      name="genres"
+                      value={obj.name}
+                      onChange={handleInputGenres}
+                    />
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+          {/* ---------------------------platforms--------------------------------- */}
+          <div className={style.inputContainer}>
+            <label className={style.subtitles}>Add platforms</label>
+            <div className={style.platfomrsContainer}>
+              <label htmlFor="PC">PC</label>
               <input
                 type="checkbox"
-                name="genres"
-                value={obj.name}
-                onChange={handleInputGenres}
+                name="platforms"
+                value="PC"
+                onChange={handleInputPlatfomrs}
               />
-              <br />
-            </label>
-          );
-        })}
+
+              <label htmlFor="Console">Console</label>
+              <input
+                type="checkbox"
+                name="platforms"
+                value="Console"
+                onChange={handleInputPlatfomrs}
+              />
+
+              <label htmlFor="Mobile">Mobile</label>
+              <input
+                type="checkbox"
+                name="platforms"
+                value="Mobile"
+                onChange={handleInputPlatfomrs}
+              />
+            </div>
+          </div>
+            <button type="submit" onClick={handleSubmit}>
+              Crear videojuego
+            </button>
+        </form>
       </div>
-      {/* ---------------------------platforms--------------------------------- */}
-      <div>
-        <h3>Add platforms</h3>
-        <label htmlFor="PC">PC</label>
-        <input
-          type="checkbox"
-          name="platforms"
-          value="PC"
-          onChange={handleInputPlatfomrs}
-        />
-        <br />
-        <label htmlFor="Console">Console</label>
-        <input
-          type="checkbox"
-          name="platforms"
-          value="Console"
-          onChange={handleInputPlatfomrs}
-        />
-        <br />
-        <label htmlFor="Mobile">Mobile</label>
-        <input
-          type="checkbox"
-          name="platforms"
-          value="Mobile"
-          onChange={handleInputPlatfomrs}
-        />
-        <br />
-      </div>
-      <button type="submit" onClick={handleSubmit}>
-        Crear videojuego
-      </button>
-    </form>
+    </div>
   );
 }
