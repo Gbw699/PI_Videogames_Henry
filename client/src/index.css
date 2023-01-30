@@ -9,4 +9,6 @@
 
 :root {
     font-family: 'Shadows Into Light', cursive;
+    width: 100vw;
+    height: 100vh;
 }

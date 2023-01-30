@@ -30,6 +30,7 @@ const getApiVideogameById = async (id) => {
     released: result.data.released,
     rating: result.data.rating,
     platforms: result.data.platforms,
+    description_raw: result.data.description_raw
   };
   //nombre, imagen, género, descripción, fecha de lanzamiento, rating, plataformas
 };

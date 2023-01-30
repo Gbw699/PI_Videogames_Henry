@@ -22,34 +22,67 @@ export default function Detail() {
   }, []);
 
   return (
-    <div className={style.imgContainer}>
-      <img className={style.img} src={img} alt="img" />
-      <div>
-        <h1>{videogame.name}</h1>
+    <div className={style.imgContainerBack}>
+      <img src={img} alt="" />
+      <div className={style.container}>
+        <h1 className={style.title}>{videogame.name}</h1>
         <NavLink to={"/home"}>
-          <button>Return to home</button>
+          <button className={style.btn}>Return to home</button>
         </NavLink>
-        <div>
-          <div>
-            <img src={videogame.background_image} alt="img" />
+        <div className={style.detailContainer}>
+          <div className={style.imgContainer}>
+            <img
+              className={style.img}
+              src={videogame.background_image}
+              alt=""
+            />
           </div>
-          <p value="description">{videogame.description_raw}</p>
-          <ul>
-            {videogame.genres?.map((obj) => {
-              return <li key={obj.name}>{obj.name}</li>;
-            })}
-          </ul>
-          <p value="released">{videogame.released}</p>
-          <p value="rating">{videogame.rating}</p>
-          <ul>
-            {videogame.platforms?.map((obj) => {
-              if (obj.platform) {
-                return <li key={obj.platform.name}>{obj.platform.name}</li>;
-              } else {
-                return <li key={obj}>{obj}</li>;
-              }
-            })}
-          </ul>
+          <div className={style.dataContainer}>
+            <div className={style.descriptionContainer}>
+              <h2 className={style.subtitles}>Description</h2>
+              <p className={style.pTexts} value="description">
+                {videogame.description_raw
+                  ? videogame.description_raw
+                  : videogame.description}
+              </p>
+            </div>
+            <div className={style.smallDataContainer}>
+              <div className={style.verySmallContainers}>
+                <h2 className={style.subtitles}>Genres</h2>
+                <ul className={style.lists}>
+                  {videogame.genres?.map((obj) => {
+                    return <li key={obj.name}>{obj.name}</li>;
+                  })}
+                </ul>
+              </div>
+              <div className={style.verySmallContainers}>
+                <h2 className={style.subtitles}>Released</h2>
+                <p className={style.pTexts} value="released">
+                  {videogame.released}
+                </p>
+              </div>
+              <div className={style.verySmallContainers}>
+                <h2 className={style.subtitles}>Rating</h2>
+                <p className={style.pTexts} value="rating">
+                  {videogame.rating}
+                </p>
+              </div>
+              <div className={style.verySmallContainers}>
+                <h2 className={style.subtitles}>Platforms</h2>
+                <ul className={style.lists}>
+                  {videogame.platforms?.map((obj) => {
+                    if (obj.platform) {
+                      return (
+                        <li key={obj.platform.name}>{obj.platform.name}</li>
+                      );
+                    } else {
+                      return <li key={obj}>{obj}</li>;
+                    }
+                  })}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
