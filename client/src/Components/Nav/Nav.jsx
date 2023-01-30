@@ -37,6 +37,10 @@ export default function Nav() {
   };
 
   const handleReset = () => {
+    document.getElementById("filter").value = "base";
+    document.getElementById("genres").value = "base";
+    document.getElementById("videogames").value = "base";
+    document.getElementById("rating").value = "base";
     dispatch(resetVideogames());
   };
   return (
@@ -122,9 +126,12 @@ export default function Nav() {
           <option value="downward">5-1</option>
         </select>
       </label>
+      <button className={style.btn} onClick={handleReset}>
+        Reset
+      </button>
       <div className={style.searchContainer}>
         <input
-        className={style.input}
+          className={style.input}
           type="text"
           placeholder="Videogame´s name"
           onChange={(e) =>
@@ -137,9 +144,6 @@ export default function Nav() {
           Search
         </button>
       </div>
-      <button className={style.btn} onClick={handleReset}>
-        Reset
-      </button>
       <NavLink to={"/form"}>
         <button className={style.btn}>Create new videogame</button>
       </NavLink>
