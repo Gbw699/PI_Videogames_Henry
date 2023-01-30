@@ -103,54 +103,61 @@ export default function Form() {
         <form className={style.inputsContainer} onSubmit={handleSubmit}>
           <div className={style.inputContainer}>
             <label className={style.subtitles} htmlFor="name">
-              Name:
+              Name
             </label>
             <input
+              className={style.input}
               type="text"
               value={data.name}
               name="name"
               onChange={handleInputChange}
               placeholder="Ingresar nombre"
             />
-            {errors.name && <p>{errors.name}</p>}
+            {errors.name && <p className={style.spans}>{errors.name}</p>}
           </div>
           <div className={style.inputContainer}>
             <label className={style.subtitles} htmlFor="description">
-              Description:
+              Description
             </label>
             <textarea
+              className={style.input}
               value={data.description}
               name="description"
               onChange={handleInputChange}
               placeholder="Ingresar descripción"
             />
-            {errors.description && <p>{errors.description}</p>}
+            {errors.description && (
+              <p className={style.spans}>{errors.description}</p>
+            )}
           </div>
           <div className={style.inputContainer}>
             <label className={style.subtitles} htmlFor="released">
-              Released:
+              Released
             </label>
             <input
+              className={style.input}
               type="text"
               value={data.released}
               name="released"
               onChange={handleInputChange}
               placeholder="Ingresar fecha de lanzamiento"
             />
-            {errors.released && <p>{errors.released}</p>}
+            {errors.released && (
+              <p className={style.spans}>{errors.released}</p>
+            )}
           </div>
           <div className={style.inputContainer}>
             <label className={style.subtitles} htmlFor="rating">
-              Rating:
+              Rating
             </label>
             <input
+              className={style.input}
               type="number"
               value={data.rating}
               name="rating"
               onChange={handleInputChange}
-              placeholder="Ingresar rating"
             />
-            {errors.rating && <p>{errors.rating}</p>}
+            {errors.rating && <p className={style.spans}>{errors.rating}</p>}
           </div>
           {/* ---------------------------genres------------------------------------ */}
           <div className={style.inputContainer}>
@@ -158,11 +165,16 @@ export default function Form() {
             <div className={style.genresContainer}>
               {allGenres?.map((obj, index) => {
                 return (
-                  <label htmlFor={obj.name} key={index}>
+                  <label
+                    className={style.genrePlatformsLabel}
+                    htmlFor={obj.name}
+                    key={index}
+                  >
                     {obj.name}
                     <input
                       type="checkbox"
                       name="genres"
+                      id={obj.name}
                       value={obj.name}
                       onChange={handleInputGenres}
                     />
@@ -175,34 +187,43 @@ export default function Form() {
           <div className={style.inputContainer}>
             <label className={style.subtitles}>Add platforms</label>
             <div className={style.platfomrsContainer}>
-              <label htmlFor="PC">PC</label>
-              <input
-                type="checkbox"
-                name="platforms"
-                value="PC"
-                onChange={handleInputPlatfomrs}
-              />
+              <label className={style.genrePlatformsLabel} htmlFor="PC">
+                PC
+                <input
+                  type="checkbox"
+                  name="platforms"
+                  id="PC"
+                  value="PC"
+                  onChange={handleInputPlatfomrs}
+                />
+              </label>
 
-              <label htmlFor="Console">Console</label>
-              <input
-                type="checkbox"
-                name="platforms"
-                value="Console"
-                onChange={handleInputPlatfomrs}
-              />
+              <label className={style.genrePlatformsLabel} htmlFor="Console">
+                Console
+                <input
+                  type="checkbox"
+                  name="platforms"
+                  id="Console"
+                  value="Console"
+                  onChange={handleInputPlatfomrs}
+                />
+              </label>
 
-              <label htmlFor="Mobile">Mobile</label>
-              <input
-                type="checkbox"
-                name="platforms"
-                value="Mobile"
-                onChange={handleInputPlatfomrs}
-              />
+              <label className={style.genrePlatformsLabel} htmlFor="Mobile">
+                Mobile
+                <input
+                  type="checkbox"
+                  name="platforms"
+                  id="Mobile"
+                  value="Mobile"
+                  onChange={handleInputPlatfomrs}
+                />
+              </label>
             </div>
           </div>
-            <button type="submit" onClick={handleSubmit}>
-              Crear videojuego
-            </button>
+          <button className={style.btnCreate} type="submit" onClick={handleSubmit}>
+            Crear videojuego
+          </button>
         </form>
       </div>
     </div>

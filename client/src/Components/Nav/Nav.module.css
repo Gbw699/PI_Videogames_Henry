@@ -26,6 +26,7 @@
     border: 0.5px solid rgba(222, 18, 133, 0.6);
     box-shadow: 0px 0px 10px #DE1285;
     outline: transparent;
+    transition: ease-in-out 100ms;
 }
 
 .selects:focus {
@@ -52,7 +53,7 @@
     box-shadow: 0px 0px 5px #DE1285;
     font-size: 18pt;
     padding: 1rem;
-    transition: ease-in-out 200mg;
+    transition: ease-in-out 100ms;
 }
 
 .btn:hover {
@@ -72,6 +73,7 @@
     font-size: 16pt;
     padding-left: 0.8rem;
     outline: transparent;
+    transition: ease-in-out 100ms;
 }
 
 .input:focus {

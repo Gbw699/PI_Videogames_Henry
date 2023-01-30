@@ -39,7 +39,7 @@
     border: 0.5px solid rgba(174, 195, 255, 0.6);
     border-radius: 8px;
     box-shadow: 0px 0px 5px #AEC3FF;
-    transition: ease-in-out 200mg;
+    transition: ease-in-out 200ms;
     text-align: center;
 }
 
@@ -70,15 +70,98 @@
 .inputContainer {
     margin: 1rem 0 2.5rem 0;
     display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.input {
+    appearance: none;
+    color: #AEC3FF;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 0.5px solid rgba(222, 18, 133, 0.6);
+    box-shadow: 0px 0px 5px #DE1285;
+    margin-right: 5px;
+    font-size: 16pt;
+    padding-left: 0.8rem;
+    outline: transparent;
+    width: 20rem;
+    transition: ease-in-out 100ms;
+}
+
+.input:focus {
+    border: 2px solid rgba(222, 18, 133, 1);
+}
+
+.input:hover {
+    border: 2px solid rgba(222, 18, 133, 1);
+}
+
+.input::placeholder {
+    color: #AEC3FF;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.input:read-write {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.spans {
+    font-size: 16pt;
+    width: 25rem;
+}
+
 .genresContainer {
-    display: flex
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 10rem;
+}
+
+.genrePlatformsLabel {
+    color: #AEC3FF;
+    margin: 1rem;
+    font-size: 14pt;
+    transition: ease-in-out 100ms;
+}
+
+.genrePlatformsLabel:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+input[type="checkbox"] {
+    margin: 10px;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .platfomrsContainer {
     display: flex;
+}
+
+.btnCreate {
+    font-family: 'Shadows Into Light', cursive;
+    color: #DE1285;
+    background-color: rgba(9, 20, 52, 0.3);
+    border-radius: 8px;
+    border: 0.5px solid rgba(222, 18, 133, 0.6);
+    box-shadow: 0px 0px 5px #DE1285;
+    font-size: 18pt;
+    padding: 1rem;
+    transition: ease-in-out 500ms;
+    margin-bottom: 3rem;
+}
+
+.btnCreate:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+    border: 2px solid rgba(222, 18, 133, 1);
 }
