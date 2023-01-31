@@ -221,7 +221,11 @@ export default function Form() {
               </label>
             </div>
           </div>
-          <button className={style.btnCreate} type="submit" onClick={handleSubmit}>
+          <button
+            className={style.btnCreate}
+            type="submit"
+            onClick={handleSubmit}
+          >
             Crear videojuego
           </button>
         </form>

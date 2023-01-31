@@ -10,23 +10,31 @@ export const RESET_VIDEOGAMES = "RESET_VIDEOGAMES";
 
 export const getVideogames = () => {
   return async (dispatch) => {
-    await fetch("http://localhost:3001/videogames")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.error) window.alert(data.error);
-        else dispatch({ type: GET_VIDEOGAMES, payload: data });
-      });
+    const response = await fetch("http://localhost:3001/videogames");
+    const data = await response.json();
+    dispatch({ type: GET_VIDEOGAMES, payload: data });
+
+    // fetch("http://localhost:3001/videogames")
+    //  .then((response) => response.json())
+    //  .then((data) => {
+    //    if (data.error) window.alert(data.error);
+    //    else dispatch({ type: GET_VIDEOGAMES, payload: data });
+    //  });
   };
 };
 
 export const getGenres = () => {
   return async (dispatch) => {
-    await fetch("http://localhost:3001/genres")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.error) window.alert(data.error);
-        else dispatch({ type: GET_GENRES, payload: data });
-      });
+    const response = await fetch("http://localhost:3001/genres")
+    const data = await response.json()
+    dispatch({ type: GET_GENRES, payload: data })
+
+    //  fetch("http://localhost:3001/genres")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (data.error) window.alert(data.error);
+    //     else dispatch({ type: GET_GENRES, payload: data });
+    //   });
   };
 };
 
@@ -48,12 +56,16 @@ export const orderRating = (value) => {
 
 export const searchVideogames = (value) => {
   return async (dispatch) => {
-    await fetch(`http://localhost:3001/videogames?name=${value}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.error) window.alert(data.error);
-        else dispatch({ type: SEARCH_VIDEOGAMES, payload: data });
-      });
+    const response = await fetch(`http://localhost:3001/videogames?name=${value}`)
+    const data = await response.json()
+    dispatch({ type: SEARCH_VIDEOGAMES, payload: data })
+
+    //  fetch(`http://localhost:3001/videogames?name=${value}`)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (data.error) window.alert(data.error);
+    //     else dispatch({ type: SEARCH_VIDEOGAMES, payload: data });
+    //   });
   };
 };
 
