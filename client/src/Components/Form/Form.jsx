@@ -52,7 +52,6 @@ export default function Form() {
       ]);
     else setPlatforms([...platforms, e.target.value]);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const objectToPost = {

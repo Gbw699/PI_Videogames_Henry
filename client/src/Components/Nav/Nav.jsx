@@ -17,13 +17,15 @@ export default function Nav() {
   const dispatch = useDispatch();
   const allGenres = useSelector((state) => state.allGenres);
   const [videogame, setVideogame] = useState("");
-
   useEffect(() => {
     if (!allGenres.length) {
       dispatch(getGenres());
     }
+    if (videogame) {
+      dispatch(searchVideogames(videogame));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [videogame]);
 
   const handleDispatchFilter = (e) => {
     dispatch(filterVideogames(e.target.value));
@@ -41,8 +43,8 @@ export default function Nav() {
     dispatch(orderRating(e.target.value));
   };
 
-  const handleDispatchSearch = () => {
-    dispatch(searchVideogames(videogame));
+  const handleDispatchSearch = (e) => {
+    setVideogame(e.target.value);
   };
 
   const handleReset = () => {
@@ -132,9 +134,7 @@ export default function Nav() {
           type="text"
           placeholder="Videogame´s name"
           onChange={(e) =>
-            e.target.value
-              ? setVideogame(e.target.value)
-              : dispatch(resetSearch())
+            e.target.value ? handleDispatchSearch(e) : dispatch(resetSearch())
           }
         />
         <button className={style.btn} onClick={handleDispatchSearch}>

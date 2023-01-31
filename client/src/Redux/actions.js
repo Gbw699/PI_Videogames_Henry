@@ -10,9 +10,15 @@ export const RESET_VIDEOGAMES = "RESET_VIDEOGAMES";
 
 export const getVideogames = () => {
   return async (dispatch) => {
-    const response = await fetch("http://localhost:3001/videogames");
-    const data = await response.json();
-    dispatch({ type: GET_VIDEOGAMES, payload: data });
+    try {
+      const response = await fetch("http://localhost:3001/videogames");
+      const data = await response.json();
+      dispatch({ type: GET_VIDEOGAMES, payload: data });
+    } catch (error) {
+      return window.alert(
+        "No se pudo hacer el pedido de videojuegos al servidor"
+      );
+    }
 
     // fetch("http://localhost:3001/videogames")
     //  .then((response) => response.json())
@@ -25,9 +31,13 @@ export const getVideogames = () => {
 
 export const getGenres = () => {
   return async (dispatch) => {
-    const response = await fetch("http://localhost:3001/genres")
-    const data = await response.json()
-    dispatch({ type: GET_GENRES, payload: data })
+    try {
+      const response = await fetch("http://localhost:3001/genres");
+      const data = await response.json();
+      dispatch({ type: GET_GENRES, payload: data });
+    } catch (error) {
+      return window.alert("No se pudo hacer el pedido de géneros al servidor");
+    }
 
     //  fetch("http://localhost:3001/genres")
     //   .then((response) => response.json())
@@ -56,9 +66,15 @@ export const orderRating = (value) => {
 
 export const searchVideogames = (value) => {
   return async (dispatch) => {
-    const response = await fetch(`http://localhost:3001/videogames?name=${value}`)
-    const data = await response.json()
-    dispatch({ type: SEARCH_VIDEOGAMES, payload: data })
+    try {
+      const response = await fetch(
+        `http://localhost:3001/videogames?name=${value}`
+      );
+      const data = await response.json();
+      dispatch({ type: SEARCH_VIDEOGAMES, payload: data });
+    } catch (error) {
+      return window.alert("No hay resultados que coinsidan con la busqueda");
+    }
 
     //  fetch(`http://localhost:3001/videogames?name=${value}`)
     //   .then((response) => response.json())
