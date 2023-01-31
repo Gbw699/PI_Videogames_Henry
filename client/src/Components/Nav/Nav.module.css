@@ -71,6 +71,7 @@
     box-shadow: 0px 0px 5px #DE1285;
     margin-right: 5px;
     font-size: 16pt;
+    padding: 1rem;
     padding-left: 0.8rem;
     outline: transparent;
     transition: ease-in-out 100ms;

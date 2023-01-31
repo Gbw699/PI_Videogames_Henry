@@ -52,6 +52,7 @@ export default function Nav() {
     document.getElementById("genres").value = "base";
     document.getElementById("videogames").value = "base";
     document.getElementById("rating").value = "base";
+    document.getElementById("search").value = "";
     dispatch(resetVideogames());
   };
   return (
@@ -131,15 +132,13 @@ export default function Nav() {
       <div className={style.searchContainer}>
         <input
           className={style.input}
+          id="search"
           type="text"
           placeholder="Videogame´s name"
           onChange={(e) =>
             e.target.value ? handleDispatchSearch(e) : dispatch(resetSearch())
           }
         />
-        <button className={style.btn} onClick={handleDispatchSearch}>
-          Search
-        </button>
       </div>
       <NavLink to={"/form"}>
         <button className={style.btn}>Create new videogame</button>
