@@ -166,7 +166,6 @@ export default function reducer(state = initialState, action) {
             return videogame1.rating - videogame2.rating;
           }),
         ];
-
         const copyToFilterByVideogames = [
           ...state.renderedVideogames.sort((videogame1, videogame2) => {
             return videogame1.rating - videogame2.rating;
@@ -189,7 +188,6 @@ export default function reducer(state = initialState, action) {
             return videogame2.rating - videogame1.rating;
           }),
         ];
-
         const copyToFilterByVideogames = [
           ...state.renderedVideogames.sort((videogame1, videogame2) => {
             return videogame2.rating - videogame1.rating;
