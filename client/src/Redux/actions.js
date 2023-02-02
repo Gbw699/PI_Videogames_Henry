@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_GENRES = "GET_GENRES";
 export const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
@@ -12,16 +14,15 @@ export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME";
 export const getVideogames = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch("http://localhost:3001/videogames");
-      const data = await response.json();
-      dispatch({ type: GET_VIDEOGAMES, payload: data });
+      const response = await axios.get("/videogames");
+      dispatch({ type: GET_VIDEOGAMES, payload: response.data });
     } catch (error) {
       return window.alert(
         "No se pudo hacer el pedido de videojuegos al servidor"
       );
     }
 
-    // fetch("http://localhost:3001/videogames")
+    // fetch("/videogames")
     //  .then((response) => response.json())
     //  .then((data) => {
     //    if (data.error) window.alert(data.error);
@@ -33,14 +34,13 @@ export const getVideogames = () => {
 export const getGenres = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch("http://localhost:3001/genres");
-      const data = await response.json();
-      dispatch({ type: GET_GENRES, payload: data });
+      const response = await axios.get("/genres");
+      dispatch({ type: GET_GENRES, payload: response.data });
     } catch (error) {
       return window.alert("No se pudo hacer el pedido de géneros al servidor");
     }
 
-    //  fetch("http://localhost:3001/genres")
+    //  fetch("/genres")
     //   .then((response) => response.json())
     //   .then((data) => {
     //     if (data.error) window.alert(data.error);
@@ -68,16 +68,15 @@ export const orderRating = (value) => {
 export const searchVideogames = (value) => {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        `http://localhost:3001/videogames?name=${value}`
+      const response = await axios.get(
+        `/videogames?name=${value}`
       );
-      const data = await response.json();
-      dispatch({ type: SEARCH_VIDEOGAMES, payload: data });
+      dispatch({ type: SEARCH_VIDEOGAMES, payload: response.data });
     } catch (error) {
       return window.alert("No hay resultados que coinsidan con la busqueda");
     }
 
-    //  fetch(`http://localhost:3001/videogames?name=${value}`)
+    //  fetch(`/videogames?name=${value}`)
     //   .then((response) => response.json())
     //   .then((data) => {
     //     if (data.error) window.alert(data.error);
