@@ -28,6 +28,27 @@ a {
     font-size: 18pt;
     color: #DE1285;
     text-decoration: underline;
+    margin-top: 0;
+}
+
+.btn {
+    align-self: flex-end;
+    margin-bottom: 0;
+    background-color: transparent;
+    font-family: 'Shadows Into Light', cursive;
+    color: #AEC3FF;
+    background-color: transparent;
+    border-radius: 5px;
+    border: none;
+    font-size: 14pt;
+    transition: ease-in-out 200ms;
+    padding: 1rem 1.5rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: scale(1.8);
+
 }
 
 .title:hover {

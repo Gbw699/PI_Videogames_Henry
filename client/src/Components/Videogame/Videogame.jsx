@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 export default function Videogame(props) {
   return (
     <div className={style.container}>
+      <button className={style.btn} onClick={() => props.handleDispatchClose(props.id)}>X</button>
       <NavLink to={`/detail/${props.id}`}>
         <h3 className={style.title}>{props.name}</h3>
       </NavLink>
-      <button onClick={() => props.handleDispatchClose(props.id)}>X</button>
       <div className={style.imgContainer}>
         <img
           className={style.img}
