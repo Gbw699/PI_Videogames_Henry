@@ -69,8 +69,8 @@ export default function Nav() {
           <option value="base" hidden={true}>
             --Display options
           </option>
-          <option value="apiVideogames">Known videogames</option>
-          <option value="dbVideogames">Created videogames</option>
+          <option value="apiVideogames">Api videogames</option>
+          <option value="dbVideogames">Db videogames</option>
         </select>
       </label>
       {/* Genres */}

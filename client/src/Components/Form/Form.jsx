@@ -110,7 +110,7 @@ export default function Form() {
               value={data.name}
               name="name"
               onChange={handleInputChange}
-              placeholder="Ingresar nombre"
+              placeholder="Enter name"
             />
             {errors.name && <p className={style.spans}>{errors.name}</p>}
           </div>
@@ -123,7 +123,7 @@ export default function Form() {
               value={data.description}
               name="description"
               onChange={handleInputChange}
-              placeholder="Ingresar descripción"
+              placeholder="Enter description"
             />
             {errors.description && (
               <p className={style.spans}>{errors.description}</p>
@@ -139,7 +139,7 @@ export default function Form() {
               value={data.released}
               name="released"
               onChange={handleInputChange}
-              placeholder="Ingresar fecha de lanzamiento"
+              placeholder="Enter released date"
             />
             {errors.released && (
               <p className={style.spans}>{errors.released}</p>
@@ -225,7 +225,7 @@ export default function Form() {
             type="submit"
             onClick={handleSubmit}
           >
-            Crear videojuego
+            Create Videogame
           </button>
         </form>
       </div>
