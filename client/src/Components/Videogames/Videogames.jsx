@@ -2,7 +2,7 @@ import img from "../../Img/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg";
 import style from "./Videogames.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogames } from "../../Redux/actions";
+import { getVideogames, deleteVideogame } from "../../Redux/actions";
 // eslint-disable-next-line no-unused-vars
 import Videogame from "../Videogame/Videogame";
 import Pagination from "../Pagination/Pagination";
@@ -36,6 +36,10 @@ export default function Videogames() {
     setCurrentPage(pageNumber);
   };
 
+  const handleDispatchClose = (id) => {
+    dispatch(deleteVideogame(id));
+  };
+
   return (
     <div className={style.imgContainer}>
       <img className={style.img} src={img} alt="img" />
@@ -57,6 +61,7 @@ export default function Videogames() {
                 genres={videogame.genres}
                 rating={videogame.rating}
                 key={videogame.id}
+                handleDispatchClose={handleDispatchClose}
               />
             );
           })}

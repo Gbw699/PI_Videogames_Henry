@@ -7,6 +7,7 @@ export const ORDER_RATING = "ORDER_RATING";
 export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
 export const RESET_SEARCH = "RESET_SEARCH";
 export const RESET_VIDEOGAMES = "RESET_VIDEOGAMES";
+export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME";
 
 export const getVideogames = () => {
   return async (dispatch) => {
@@ -91,4 +92,8 @@ export const resetSearch = () => {
 
 export const resetVideogames = () => {
   return { type: RESET_VIDEOGAMES };
+};
+
+export const deleteVideogame = (id) => {
+  return { type: DELETE_VIDEOGAME, payload: id };
 };

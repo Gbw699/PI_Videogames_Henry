@@ -8,6 +8,7 @@ import {
   SEARCH_VIDEOGAMES,
   RESET_SEARCH,
   RESET_VIDEOGAMES,
+  DELETE_VIDEOGAME,
 } from "./actions";
 
 const initialState = {
@@ -225,6 +226,18 @@ export default function reducer(state = initialState, action) {
         renderedVideogames: [...state.allVideogames],
         toFilterByVideogames: [],
         toFilterByGenre: [],
+      };
+    case DELETE_VIDEOGAME:
+      const copyRenderedVideogames = [
+        ...state.renderedVideogames.filter((videogame) => {
+          return videogame.id !== action.payload;
+        }),
+      ];
+      return {
+        ...state,
+        renderedVideogames: [...copyRenderedVideogames],
+        toFilterByVideogames: [...copyRenderedVideogames],
+        toFilterByGenre: [...copyRenderedVideogames],
       };
     default:
       return { ...state };
