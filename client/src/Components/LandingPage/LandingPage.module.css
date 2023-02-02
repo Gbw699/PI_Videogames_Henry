@@ -54,8 +54,9 @@ body {
     box-shadow: 0px 0px 5px #DE1285;
     font-size: 18pt;
     padding: 1rem;
-    top: 50vh;
-    left: 50vw;
+    top: 55%;
+    left: 40%;
+    transform: rotate(7.5deg);
     transition: ease-in-out 300ms;
 }
 
@@ -65,5 +66,3 @@ body {
     background-color: rgba(9, 20, 52, 1);
     box-shadow: 0px 0px 25px #DE1285;
 }
-
-

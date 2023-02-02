@@ -7,10 +7,10 @@ export default function LandingPage(props) {
     <div className={style.container}>
       <div className={style.imgContainer}>
         <img className={style.img} src={img} alt="img" />
-      </div>
       <NavLink to={"/home"}>
         <button className={style.btn}>Enter</button>
       </NavLink>
+      </div>
     </div>
   );
 }
