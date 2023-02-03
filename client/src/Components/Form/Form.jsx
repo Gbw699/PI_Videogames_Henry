@@ -6,6 +6,7 @@ import { validation } from "./validation";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres, getVideogames } from "../../Redux/actions";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -72,20 +73,14 @@ export default function Form() {
       return window.alert("Debe completar todos los campos del formulario");
     } else {
       return (async () => {
-        await fetch("http://localhost:3001/videogames", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ...objectToPost }),
-        })
-          .then((response) => response.json())
-          .then((data) =>
-            window.alert(data.success ? data.success : data.error)
-          )
-          .catch((err) => {
-            window.alert(err.message);
-          });
+        try {
+          const response = await axios.post("/videogames", { ...objectToPost });
+          window.alert(
+            response.data.success ? response.data.success : response.data.error
+          );
+        } catch (err) {
+          window.alert(err.message);
+        }
         dispatch(getVideogames());
       })();
     }

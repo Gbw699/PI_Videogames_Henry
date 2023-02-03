@@ -64,6 +64,7 @@ body {
     .btn {
         top: 58%;
         left: 20%;
+        transform: scale(1.2);
     }
 }
 
