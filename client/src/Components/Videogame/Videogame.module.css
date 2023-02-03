@@ -16,6 +16,16 @@
     transition: ease-in-out 200ms;
 }
 
+@media (max-width: 420px) {
+    .container {
+        width: 15rem;
+        height: 20rem;
+        margin: 0.5rem;
+        margin-left: 1rem;
+        background-size: 4rem, auto;
+    }
+}
+
 .container:hover {
     transform: scale(1.05);
 }
@@ -31,6 +41,12 @@ a {
     margin-top: 0;
 }
 
+@media (max-width: 420px) {
+    .title {
+        font-size: 14pt;
+    }
+}
+
 .btn {
     align-self: flex-end;
     margin-bottom: 0;
@@ -43,6 +59,13 @@ a {
     font-size: 14pt;
     transition: ease-in-out 200ms;
     padding: 1rem 1.5rem;
+}
+
+@media (max-width: 420px) {
+    .btn {
+        font-size: 14pt;
+        padding: 0 1rem;
+    }
 }
 
 .btn:hover {
@@ -69,11 +92,27 @@ a {
     background-position: 50%;
 }
 
+@media (max-width: 420px) {
+    .imgContainer {
+        width: 14rem;
+        height: 14rem;
+        background-image: url(../../Img/joystickcopy.svg), linear-gradient(125deg, #AEC3FF 15%, #DE1285);
+        background-repeat: no-repeat;
+        background-position: 50%;
+    }
+}
+
 
 .img {
     width: auto;
     height: 310px;
     image-rendering: optimizeSpeed;
+}
+
+@media (max-width: 420px) {
+    .img {
+        height: 180px
+    }
 }
 
 .pContainer {
@@ -84,16 +123,34 @@ a {
     align-items: center;
 }
 
+@media (max-width: 420px) {
+    .pContainer {
+        width: 14rem;
+    }
+}
+
 .genre {
     font-size: 16pt;
     color: #AEC3FF;
     cursor: default;
 }
 
+@media (max-width: 420px) {
+    .genre {
+        font-size: 12pt;
+        margin: 0;
+    }
+}
 
 .rating {
     font-size: 18pt;
     color: #DE1285;
+}
+
+@media (max-width: 420px) {
+    .rating {
+        font-size: 14pt;
+    }
 }
 
 /*overflow hidden, object-fit y propiedad lazy para imagenes*/

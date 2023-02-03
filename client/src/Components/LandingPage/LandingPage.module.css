@@ -60,6 +60,13 @@ body {
     transition: ease-in-out 300ms;
 }
 
+@media (max-width: 420px) {
+    .btn {
+        top: 58%;
+        left: 20%;
+    }
+}
+
 .btn:hover {
     transform: scale(1.1);
     cursor: pointer;

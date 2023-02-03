@@ -3,14 +3,15 @@ import img from "../../Img/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 
 export default function Detail() {
   const { detailId } = useParams();
   const [videogame, setVideogame] = useState({});
 
   useEffect(() => {
-    axios.get(`/videogames/${detailId}`)
+    axios
+      .get(`/videogames/${detailId}`)
       .then((response) => {
         setVideogame(response.data);
       })
